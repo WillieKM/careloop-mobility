@@ -6,20 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="CareLoop Mobility provides safe, reliable non-emergency medical transportation in Snohomish and King County. Ambulatory and wheelchair transport. Call 513-607-4349 or request a ride online.">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --primary: #e6393f;  /* red from logo (approx) */
-      --primary-dark: #c12e34;
-      --accent: #0a4c7d;   /* blue from logo (approx) */
-      --bg: #050608;
-      --card-bg: #121318;
-      --text: #f5f5f7;
-      --muted: #a0a3b1;
+      /* Tuned to be closer to your logo colors */
+      --primary: #ef3b2d;       /* warm red */
+      --primary-dark: #c52f24;
+      --accent: #0b4f7f;        /* deep blue */
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --surface-soft: #f9fafb;
+      --border-subtle: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
       --radius-lg: 18px;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
+      --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.08);
     }
 
     * {
@@ -30,9 +33,10 @@
 
     body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #181b24 0, #050608 55%);
+      background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
@@ -42,7 +46,7 @@
 
     .container {
       width: 100%;
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 1.5rem;
     }
@@ -51,9 +55,9 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, rgba(5,6,8,0.92), rgba(5,6,8,0.75));
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
     }
 
     .nav-inner {
@@ -72,8 +76,8 @@
     .brand-logo {
       width: 40px;
       height: 40px;
-      border-radius: 50%;
-      background: #111;
+      border-radius: 999px;
+      background: #111827;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -92,10 +96,11 @@
     }
 
     .brand-text span:first-child {
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      font-family: "Poppins", system-ui, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
     }
 
     .brand-text span:last-child {
@@ -106,12 +111,13 @@
     nav ul {
       list-style: none;
       display: flex;
-      gap: 1.25rem;
+      gap: 1.35rem;
       font-size: 0.9rem;
     }
 
     nav a {
       opacity: 0.8;
+      font-weight: 500;
     }
 
     nav a:hover {
@@ -124,29 +130,38 @@
       background: var(--primary);
       font-size: 0.85rem;
       font-weight: 600;
-      box-shadow: 0 10px 25px rgba(230,57,63,0.4);
+      color: #ffffff;
+      box-shadow: 0 10px 25px rgba(239, 59, 45, 0.35);
+      white-space: nowrap;
     }
 
     .hero {
-      padding: 3.5rem 0 2.5rem;
+      padding: 3.2rem 0 2.5rem;
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
       gap: 2.5rem;
       align-items: center;
+    }
+
+    .hero-left {
+      max-width: 34rem;
     }
 
     .hero-eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
+      font-size: 0.7rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.55rem;
     }
 
     .hero-title {
-      font-size: clamp(2.1rem, 2.6vw + 1.2rem, 3rem);
+      font-family: "Poppins", system-ui, sans-serif;
+      font-size: clamp(2.1rem, 2.5vw + 1.2rem, 2.9rem);
       font-weight: 700;
-      margin-bottom: 0.75rem;
+      line-height: 1.2;
+      margin-bottom: 0.85rem;
     }
 
     .hero-title span {
@@ -157,46 +172,46 @@
       color: var(--muted);
       font-size: 0.98rem;
       margin-bottom: 1.6rem;
-      max-width: 34rem;
     }
 
     .hero-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
+      gap: 0.6rem;
+      margin-bottom: 1.35rem;
     }
 
     .badge {
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.14);
-      padding: 0.25rem 0.75rem;
+      border: 1px solid var(--border-subtle);
+      padding: 0.3rem 0.8rem;
       font-size: 0.78rem;
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
       color: var(--muted);
+      background: #ffffff;
     }
 
     .badge-dot {
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       border-radius: 999px;
-      background: #1ddf78;
+      background: #16a34a;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
+      gap: 0.8rem;
+      margin-bottom: 0.85rem;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.8rem 1.35rem;
+      padding: 0.85rem 1.5rem;
       border-radius: 999px;
       font-size: 0.92rem;
       font-weight: 600;
@@ -208,22 +223,24 @@
 
     .btn-primary {
       background: var(--primary);
-      box-shadow: 0 18px 40px rgba(230,57,63,0.45);
+      color: #ffffff;
+      box-shadow: 0 18px 38px rgba(239, 59, 45, 0.32);
     }
 
     .btn-primary:hover {
       background: var(--primary-dark);
       transform: translateY(-1px);
-      box-shadow: 0 22px 45px rgba(230,57,63,0.55);
+      box-shadow: 0 22px 45px rgba(239, 59, 45, 0.42);
     }
 
     .btn-ghost {
-      background: rgba(18,19,24,0.8);
-      border: 1px solid rgba(255,255,255,0.09);
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      color: var(--accent);
     }
 
     .btn-ghost:hover {
-      background: rgba(255,255,255,0.03);
+      background: var(--surface-soft);
       transform: translateY(-1px);
     }
 
@@ -232,40 +249,59 @@
       color: var(--muted);
     }
 
+    .hero-right {
+      display: flex;
+      justify-content: center;
+    }
+
     .hero-card {
-      background: radial-gradient(circle at top left, rgba(230,57,63,0.18), transparent 55%), var(--card-bg);
+      background: var(--surface);
       border-radius: 26px;
-      padding: 1.8rem 1.6rem;
+      padding: 1.5rem;
       box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(255,255,255,0.04);
+      border: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
-      gap: 1.1rem;
+      gap: 1rem;
+    }
+
+    .hero-image-wrapper {
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: #e5e7eb;
+    }
+
+    .hero-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .hero-card h2 {
-      font-size: 1rem;
+      font-size: 0.95rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--muted);
+      font-weight: 600;
     }
 
     .hero-card-main {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-top: 0.35rem;
+      font-size: 0.98rem;
+      font-weight: 500;
     }
 
     .hero-card-kv {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 1rem;
-      font-size: 0.9rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      font-size: 0.86rem;
     }
 
     .kv-item span:first-child {
       color: var(--muted);
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
     }
@@ -275,10 +311,10 @@
     }
 
     .hero-card-footer {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--muted);
-      border-top: 1px solid rgba(255,255,255,0.04);
-      padding-top: 0.9rem;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 0.8rem;
     }
 
     main {
@@ -286,23 +322,24 @@
     }
 
     section {
-      padding: 2.25rem 0 0.5rem;
-      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 2.4rem 0 0.9rem;
     }
 
     .section-header {
-      margin-bottom: 1.15rem;
+      margin-bottom: 1.2rem;
     }
 
     .section-eyebrow {
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.72rem;
-      color: var(--muted);
+      letter-spacing: 0.18em;
+      font-size: 0.7rem;
+      color: var(--accent);
+      font-weight: 600;
       margin-bottom: 0.35rem;
     }
 
     .section-title {
+      font-family: "Poppins", system-ui, sans-serif;
       font-size: 1.35rem;
       font-weight: 600;
       margin-bottom: 0.15rem;
@@ -321,14 +358,16 @@
     }
 
     .card {
-      background: rgba(18,19,24,0.9);
+      background: var(--surface);
       border-radius: var(--radius-lg);
-      padding: 1.1rem 1.2rem;
-      border: 1px solid rgba(255,255,255,0.04);
+      padding: 1.1rem 1.25rem;
+      border: 1px solid var(--border-subtle);
       font-size: 0.9rem;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.03);
     }
 
     .card h3 {
+      font-family: "Poppins", system-ui, sans-serif;
       font-size: 1rem;
       margin-bottom: 0.35rem;
     }
@@ -340,38 +379,37 @@
     .pill-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.55rem;
+      gap: 0.45rem;
       margin-top: 0.5rem;
     }
 
     .pill {
       border-radius: 999px;
-      background: rgba(255,255,255,0.04);
+      background: var(--surface-soft);
       padding: 0.3rem 0.7rem;
       font-size: 0.78rem;
       color: var(--muted);
+      border: 1px solid var(--border-subtle);
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: minmax(0,1.4fr) minmax(0,1fr);
-      gap: 1.4rem;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.2fr);
+      gap: 1.5rem;
+      align-items: flex-start;
     }
 
     .contact-box {
-      background: rgba(18,19,24,0.9);
+      background: var(--surface);
       border-radius: var(--radius-lg);
-      padding: 1.2rem 1.25rem;
-      border: 1px solid rgba(255,255,255,0.05);
+      padding: 1.2rem 1.3rem;
+      border: 1px solid var(--border-subtle);
       font-size: 0.9rem;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.03);
     }
 
     .contact-box strong {
       font-weight: 600;
-    }
-
-    .contact-box + .contact-box {
-      margin-top: 0.75rem;
     }
 
     iframe.form-embed {
@@ -379,14 +417,43 @@
       min-height: 520px;
       border: none;
       border-radius: var(--radius-lg);
-      background: #fff;
+      background: #ffffff;
+    }
+
+    /* FAQ styles */
+    .faq-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.9rem;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.02);
+    }
+
+    .faq-item h3 {
+      font-family: "Poppins", system-ui, sans-serif;
+      font-size: 0.98rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .faq-item p {
+      color: var(--muted);
+      font-size: 0.88rem;
     }
 
     footer {
       padding: 1.75rem 0 2.25rem;
       font-size: 0.8rem;
       color: var(--muted);
-      border-top: 1px solid rgba(255,255,255,0.04);
+      border-top: 1px solid var(--border-subtle);
+      background: #ffffff;
+      margin-top: 2rem;
     }
 
     footer .container {
@@ -397,10 +464,13 @@
       align-items: center;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
       .hero {
-        grid-template-columns: minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
         padding-top: 2.5rem;
+      }
+      .hero-right {
+        order: -1;
       }
       nav ul {
         display: none;
@@ -409,7 +479,7 @@
         margin-left: auto;
       }
       .contact-grid {
-        grid-template-columns: minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
@@ -433,7 +503,8 @@
       <ul>
         <li><a href="#services">Services</a></li>
         <li><a href="#service-area">Service Area</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#book">Book</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -448,14 +519,14 @@
   <div class="container">
     <!-- HERO -->
     <section class="hero">
-      <div>
+      <div class="hero-left">
         <div class="hero-eyebrow">Non-Emergency Medical Transportation</div>
         <h1 class="hero-title">
           Safe, reliable rides to your medical appointments in
-          <span>Snohomish &amp; King County</span>.
+          <span>Snohomish &amp; King County.</span>
         </h1>
         <p class="hero-subtitle">
-          CareLoop Mobility provides door-to-door ambulatory and wheelchair transportation to help you
+          CareLoop Mobility provides door-to-door ambulatory and wheelchair transportation so you can
           get to your appointments on time, comfortably, and with care.
         </p>
 
@@ -483,34 +554,42 @@
         </p>
       </div>
 
-      <aside class="hero-card">
-        <h2>At-a-glance</h2>
-        <div class="hero-card-main">
-          Non-emergency medical transportation focused on comfort, reliability, and respect for every rider.
-        </div>
-        <div class="hero-card-kv">
-          <div class="kv-item">
-            <span>Service area</span>
-            <span>Snohomish &amp; King County</span>
+      <div class="hero-right">
+        <aside class="hero-card">
+          <div class="hero-image-wrapper">
+            <!-- Make sure nemt-vehicle.jpg exists in your repo -->
+            <img src="nemt-vehicle.jpg" alt="CareLoop Mobility NEMT vehicle">
           </div>
-          <div class="kv-item">
-            <span>Mobility types</span>
-            <span>Ambulatory &amp; Wheelchair</span>
+          <div>
+            <h2>At-a-glance</h2>
+            <div class="hero-card-main">
+              Non-emergency medical transportation focused on comfort, reliability, and respect for every rider.
+            </div>
           </div>
-          <div class="kv-item">
-            <span>Booking</span>
-            <span>Phone &amp; online form</span>
+          <div class="hero-card-kv">
+            <div class="kv-item">
+              <span>Service area</span>
+              <span>Snohomish &amp; King County</span>
+            </div>
+            <div class="kv-item">
+              <span>Mobility types</span>
+              <span>Ambulatory &amp; Wheelchair</span>
+            </div>
+            <div class="kv-item">
+              <span>Booking</span>
+              <span>Phone &amp; online form</span>
+            </div>
+            <div class="kv-item">
+              <span>Contact</span>
+              <span>513-607-4349</span>
+            </div>
           </div>
-          <div class="kv-item">
-            <span>Contact</span>
-            <span>513-607-4349</span>
+          <div class="hero-card-footer">
+            We do not provide stretcher transport. If you’re unsure whether we can accommodate your needs,
+            call us and we’ll be happy to help.
           </div>
-        </div>
-        <div class="hero-card-footer">
-          We do not provide stretcher transport. If you’re unsure whether we can accommodate your needs,
-          call us and we’ll be happy to help.
-        </div>
-      </aside>
+        </aside>
+      </div>
     </section>
 
     <!-- SERVICES -->
@@ -624,6 +703,54 @@
             class="form-embed"
             src="YOUR_GOOGLE_FORM_LINK_HERE?embedded=true">
           </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="section-header">
+        <div class="section-eyebrow">FAQ</div>
+        <h2 class="section-title">Frequently asked questions</h2>
+        <p class="section-subtitle">
+          A few quick answers to common questions about CareLoop Mobility and our NEMT services.
+        </p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>How far in advance should I schedule a ride?</h3>
+          <p>
+            We recommend scheduling at least 24–48 hours in advance whenever possible. Same-day trips may be available depending on schedule and location—call us to check.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What types of riders can you transport?</h3>
+          <p>
+            We currently serve ambulatory riders (able to walk with or without assistance) and wheelchair users. We do not provide stretcher or emergency transport.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Is this an emergency service?</h3>
+          <p>
+            No. CareLoop Mobility provides <strong>non-emergency</strong> transportation only. If you are experiencing a medical emergency, please call 911 immediately.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What happens after I submit the online request form?</h3>
+          <p>
+            After you send a request through the form, we review the details and call you at the phone number provided to confirm pickup time, location, and any special needs.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What is your cancellation policy?</h3>
+          <p>
+            If you need to cancel or reschedule, please call us as soon as you know—ideally 24 hours before your pickup time—so we can adjust our schedule and help other riders.
+          </p>
         </div>
       </div>
     </section>
