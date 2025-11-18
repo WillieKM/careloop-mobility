@@ -2,47 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>CareLoop Mobility | Non-Emergency Medical Transportation – Snohomish & King County</title>
+  <title>CareLoop Mobility – Non-Emergency Medical Transportation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="CareLoop Mobility provides door-to-door ambulatory and wheelchair non-emergency medical transportation in Snohomish and King County. Call 513-607-4349 or request a ride online.">
+  <meta name="description" content="CareLoop Mobility provides safe, reliable ambulatory and wheelchair non-emergency medical transportation in Snohomish and King County. Call or request a ride online.">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- LocalBusiness structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "CareLoop Mobility",
-    "url": "https://williekm.github.io/careloop-mobility/",
-    "description": "CareLoop Mobility provides door-to-door ambulatory and wheelchair non-emergency medical transportation in Snohomish and King County.",
-    "telephone": "+1-513-607-4349",
-    "image": "https://williekm.github.io/careloop-mobility/careloop-vehicle-exterior.jpg",
-    "areaServed": [
-      {
-        "@type": "AdministrativeArea",
-        "name": "Snohomish County"
-      },
-      {
-        "@type": "AdministrativeArea",
-        "name": "King County"
-      }
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressRegion": "WA",
-      "addressCountry": "US"
-    }
-  }
-  </script>
-
   <style>
     :root {
-      /* Tuned to be closer to your logo colors */
-      --primary: #ef3b2d;       /* warm red */
+      --primary: #ef3b2d;
       --primary-dark: #c52f24;
-      --accent: #0b4f7f;        /* deep blue */
+      --accent: #0b4f7f;
       --bg: #f5f5f7;
       --surface: #ffffff;
       --surface-soft: #f9fafb;
@@ -60,7 +31,7 @@
     }
 
     body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: "Inter", system-ui;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -72,12 +43,7 @@
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
     .container {
-      width: 100%;
       max-width: 1120px;
       margin: 0 auto;
       padding: 1.5rem;
@@ -94,8 +60,8 @@
 
     .nav-inner {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 1.5rem;
     }
 
@@ -109,804 +75,485 @@
       width: 40px;
       height: 40px;
       border-radius: 999px;
+      overflow: hidden;
       background: #111827;
       display: flex;
-      align-items: center;
       justify-content: center;
-      overflow: hidden;
+      align-items: center;
     }
 
     .brand-logo img {
-      max-width: 100%;
-      max-height: 100%;
-      display: block;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand-text span:first-child {
-      font-family: "Poppins", system-ui, sans-serif;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-
-    .brand-text span:last-child {
-      font-size: 0.8rem;
-      color: var(--muted);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     nav ul {
-      list-style: none;
       display: flex;
       gap: 1.35rem;
+      list-style: none;
       font-size: 0.9rem;
     }
-
-    nav a {
-      opacity: 0.8;
-      font-weight: 500;
-      text-decoration: none;
-    }
-
-    nav a:hover {
-      opacity: 1;
-      text-decoration: underline;
-    }
+    nav a { opacity: 0.8; font-weight: 500; }
+    nav a:hover { opacity: 1; }
 
     .nav-cta a {
       padding: 0.65rem 1.2rem;
       border-radius: 999px;
       background: var(--primary);
-      font-size: 0.9rem;
+      color: #fff;
       font-weight: 600;
-      color: #ffffff;
-      box-shadow: 0 10px 25px rgba(239, 59, 45, 0.40);
-      white-space: nowrap;
-      text-decoration: none;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 25px rgba(239,59,45,0.40);
     }
 
-    .nav-cta a:hover {
-      text-decoration: none;
-      background: var(--primary-dark);
-    }
-
+    /* HERO */
     .hero {
-      padding: 3.2rem 0 2.5rem;
+      padding: 3rem 0 2.5rem;
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      grid-template-columns: 1.3fr 1.1fr;
       gap: 2.5rem;
       align-items: center;
     }
 
-    .hero-left {
-      max-width: 34rem;
-    }
-
-    .hero-eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.7rem;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 0.55rem;
-    }
-
     .hero-title {
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Poppins";
       font-size: clamp(2.1rem, 2.5vw + 1.2rem, 2.9rem);
+      margin-bottom: 1rem;
       font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 0.85rem;
+      line-height: 1.15;
     }
 
-    .hero-title span {
-      color: var(--primary);
-    }
+    .hero-title span { color: var(--primary); }
 
-    .hero-subtitle {
-      color: var(--muted);
-      font-size: 0.98rem;
-      margin-bottom: 1.6rem;
-    }
+    .hero-subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 1.4rem; }
 
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 1.35rem;
-    }
+    .badge { display:inline-flex; align-items:center; padding:0.3rem 0.8rem; border-radius:999px; background:white; border:1px solid var(--border-subtle); font-size:0.78rem; margin-right:0.5rem; color:var(--muted); }
 
-    .badge {
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      padding: 0.3rem 0.8rem;
-      font-size: 0.78rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      color: var(--muted);
-      background: #ffffff;
-    }
-
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #16a34a;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 0.85rem;
-    }
+    .hero-actions { display:flex; gap:0.8rem; flex-wrap:wrap; margin:1rem 0; }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       padding: 0.85rem 1.5rem;
       border-radius: 999px;
-      font-size: 0.92rem;
       font-weight: 600;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
       border: none;
       cursor: pointer;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
       white-space: nowrap;
-      text-decoration: none;
     }
 
     .btn-primary {
       background: var(--primary);
-      color: #ffffff;
-      box-shadow: 0 18px 38px rgba(239, 59, 45, 0.32);
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 22px 45px rgba(239, 59, 45, 0.42);
-      text-decoration: none;
+      color: #fff;
+      box-shadow: 0 18px 38px rgba(239,59,45,0.32);
     }
 
     .btn-ghost {
-      background: #ffffff;
+      background: white;
       border: 1px solid var(--border-subtle);
       color: var(--accent);
     }
 
-    .btn-ghost:hover {
-      background: var(--surface-soft);
-      transform: translateY(-1px);
-      text-decoration: none;
-    }
-
-    .hero-footnote {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .hero-right {
-      display: flex;
-      justify-content: center;
-    }
-
-    .hero-card {
-      background: var(--surface);
-      border-radius: 26px;
-      padding: 1.5rem;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border-subtle);
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    /* Hero slider */
     .hero-slider {
       position: relative;
       width: 100%;
       border-radius: 18px;
       overflow: hidden;
-      background: #e5e7eb;
       aspect-ratio: 4 / 3;
+      background: #e5e7eb;
     }
 
     .hero-slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 0.6s ease-in-out;
+      position:absolute; inset:0; opacity:0;
+      transition: opacity .6s ease-in-out;
     }
+    .hero-slide.is-active { opacity:1; }
 
     .hero-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      width:100%; height:100%; object-fit:cover;
     }
 
-    .hero-slide.is-active {
-      opacity: 1;
-    }
+    .hero-slider-dots { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; gap:0.4rem; }
+    .hero-slider-dot { width:8px; height:8px; border-radius:999px; background:rgba(255,255,255,0.5); border:1px solid rgba(15,23,42,0.25); cursor:pointer; }
+    .hero-slider-dot.is-active { background:white; }
 
-    .hero-slider-dots {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 0.4rem;
-    }
+    /* SECTIONS */
+    section { padding: 2.4rem 0 1rem; }
+    .section-header { margin-bottom:1.2rem; }
+    .section-eyebrow { text-transform:uppercase; font-size:0.7rem; color:var(--accent); letter-spacing:0.18em; margin-bottom:0.4rem; font-weight:600; }
+    .section-title { font-family:"Poppins"; font-size:1.4rem; font-weight:600; margin-bottom:0.3rem; }
+    .section-subtitle { font-size:0.9rem; color:var(--muted); max-width:36rem; }
 
-    .hero-slider-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.5);
-      border: 1px solid rgba(15, 23, 42, 0.25);
-      cursor: pointer;
-    }
+    .cards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.2rem; }
 
-    .hero-slider-dot.is-active {
+    .card, .contact-box {
       background: white;
-    }
-
-    .hero-card h2 {
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .hero-card-main {
-      font-size: 0.98rem;
-      font-weight: 500;
-    }
-
-    .hero-card-kv {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem;
-      font-size: 0.86rem;
-    }
-
-    .kv-item span:first-child {
-      color: var(--muted);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .kv-item span:last-child {
-      font-weight: 600;
-    }
-
-    .hero-card-footer {
-      font-size: 0.78rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border-subtle);
-      padding-top: 0.8rem;
-    }
-
-    main {
-      padding-bottom: 3rem;
-    }
-
-    section {
-      padding: 2.4rem 0 0.9rem;
-    }
-
-    .section-header {
-      margin-bottom: 1.2rem;
-    }
-
-    .section-eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.7rem;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-    }
-
-    .section-title {
-      font-family: "Poppins", system-ui, sans-serif;
-      font-size: 1.35rem;
-      font-weight: 600;
-      margin-bottom: 0.15rem;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 32rem;
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.2rem;
-    }
-
-    .card {
-      background: var(--surface);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 1.1rem 1.25rem;
-      border: 1px solid var(--border-subtle);
-      font-size: 0.9rem;
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.03);
+      padding: 1.2rem 1.3rem;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.03);
+      font-size:0.9rem;
     }
 
-    .card h3 {
-      font-family: "Poppins", system-ui, sans-serif;
-      font-size: 1rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .card p {
-      color: var(--muted);
-    }
-
-    .pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-      margin-top: 0.5rem;
-    }
-
-    .pill {
-      border-radius: 999px;
-      background: var(--surface-soft);
-      padding: 0.3rem 0.7rem;
-      font-size: 0.78rem;
-      color: var(--muted);
-      border: 1px solid var(--border-subtle);
-    }
+    .pill-list { display:flex; flex-wrap:wrap; gap:0.45rem; }
+    .pill { background: var(--surface-soft); border:1px solid var(--border-subtle); border-radius:999px; padding:0.3rem 0.7rem; font-size:0.78rem; color:var(--muted); }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.2fr);
+      grid-template-columns: 1.3fr 1.2fr;
       gap: 1.5rem;
-      align-items: flex-start;
+      align-items:flex-start;
     }
 
-    .contact-box {
-      background: var(--surface);
-      border-radius: var(--radius-lg);
-      padding: 1.2rem 1.3rem;
-      border: 1px solid var(--border-subtle);
-      font-size: 0.9rem;
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.03);
-    }
-
-    .contact-box strong {
-      font-weight: 600;
-    }
-
-    /* FAQ styles */
-    .faq-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
-    }
-
+    /* FAQ */
+    .faq-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; }
     .faq-item {
-      background: var(--surface);
-      border-radius: var(--radius-lg);
-      padding: 1rem 1.1rem;
-      border: 1px solid var(--border-subtle);
-      font-size: 0.9rem;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.02);
-    }
-
-    .faq-item h3 {
-      font-family: "Poppins", system-ui, sans-serif;
-      font-size: 0.98rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .faq-item p {
-      color: var(--muted);
-      font-size: 0.88rem;
+      background: white;
+      padding:1rem 1.1rem;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border-subtle);
+      box-shadow:0 8px 20px rgba(15,23,42,0.02);
+      font-size:0.9rem;
     }
 
     footer {
-      padding: 1.75rem 0 2.25rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border-subtle);
-      background: #ffffff;
-      margin-top: 2rem;
+      margin-top:2rem; padding:2rem 0;
+      border-top:1px solid var(--border-subtle);
+      font-size:0.8rem; color:var(--muted); background:white;
     }
 
-    footer .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-        padding-top: 2.5rem;
-      }
-      .hero-right {
-        order: -1;
-      }
-      nav ul {
-        display: none;
-      }
-      .nav-cta {
-        margin-left: auto;
-      }
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+    @media(max-width:900px){
+      .hero { grid-template-columns:1fr; }
+      nav ul { display:none; }
+      .contact-grid { grid-template-columns:1fr; }
     }
   </style>
 </head>
+
 <body>
 
 <header>
   <div class="container nav-inner">
     <div class="brand">
-      <div class="brand-logo">
-        <!-- Make sure logo.png exists in your repo -->
-        <img src="logo.png" alt="CareLoop Mobility logo">
-      </div>
-      <div class="brand-text">
-        <span>CareLoop Mobility</span>
-        <span>NEMT • Snohomish &amp; King County</span>
+      <div class="brand-logo"><img src="logo.png" alt=""></div>
+      <div>
+        <strong>CareLoop Mobility</strong><br>
+        <span style="color:var(--muted); font-size:0.8rem;">NEMT • Snohomish & King County</span>
       </div>
     </div>
-
     <nav>
       <ul>
-        <li><a href="#about">About Us</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#clinics">Clinics</a></li>
         <li><a href="#service-area">Service Area</a></li>
+        <li><a href="#book">Book</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-
     <div class="nav-cta">
       <a href="tel:5136074349">Call Now</a>
     </div>
   </div>
 </header>
 
+
 <main>
   <div class="container">
+
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-left">
-        <div class="hero-eyebrow">Non-Emergency Medical Transportation</div>
+
+      <div>
+        <div class="section-eyebrow">Non-Emergency Medical Transportation</div>
+
         <h1 class="hero-title">
-          Safe, reliable rides to your medical appointments in
-          <span>Snohomish &amp; King County.</span>
+          Safe, Reliable Medical Transportation Across
+          <span>Snohomish & King County</span>
         </h1>
+
         <p class="hero-subtitle">
-          CareLoop Mobility provides door-to-door ambulatory and wheelchair transportation so you can
-          get to your appointments on time, comfortably, and with care.
+          CareLoop Mobility provides dependable ambulatory and wheelchair transportation for medical appointments, treatments, and therapy visits—delivered with professionalism, safety, and compassion.
         </p>
 
-        <div class="hero-badges">
-          <div class="badge">
-            <span class="badge-dot"></span>
-            <span>On-time, door-to-door service</span>
-          </div>
-          <div class="badge">
-            <span>Ambulatory &amp; wheelchair transport</span>
-          </div>
+        <div>
+          <span class="badge">On-time, door-to-door service</span>
+          <span class="badge">Ambulatory & wheelchair support</span>
+          <span class="badge">Professional drivers</span>
         </div>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="tel:5136074349">
-            📞 Call 513-607-4349
-          </a>
-          <a class="btn btn-ghost" href="#book">
-            📋 Request a Ride Online
-          </a>
+          <a class="btn btn-primary" href="tel:5136074349">📞 Call Now</a>
+          <a class="btn btn-ghost" href="#book">📋 Request a Ride</a>
         </div>
 
-        <p class="hero-footnote">
-          Serving clinics, hospitals, dialysis, rehab, and specialist appointments across Snohomish &amp; King County.
+        <p class="hero-footnote" style="font-size:0.8rem; color:var(--muted);">
+          Serving clinics, hospitals, dialysis centers, rehab providers, and specialists across Snohomish & King County.
         </p>
       </div>
 
-      <div class="hero-right">
-        <aside class="hero-card">
-          <div class="hero-slider" aria-label="CareLoop Mobility service photos">
-            <div class="hero-slide is-active">
-              <img src="careloop-vehicle-exterior.jpg"
-                   alt="CareLoop Mobility vehicle parked at the entrance of a medical clinic">
-            </div>
-
-            <div class="hero-slide">
-              <img src="driver-assisting-wheelchair.jpg"
-                   alt="CareLoop Mobility driver assisting a wheelchair rider safely from door to vehicle">
-            </div>
-
-            <div class="hero-slide">
-              <img src="wheelchair-ramp-securement.jpg"
-                   alt="Wheelchair ramp and securement system inside a CareLoop Mobility accessible vehicle">
-            </div>
-
-            <div class="hero-slider-dots">
-              <button class="hero-slider-dot is-active" type="button" aria-label="Go to slide 1"></button>
-              <button class="hero-slider-dot" type="button" aria-label="Go to slide 2"></button>
-              <button class="hero-slider-dot" type="button" aria-label="Go to slide 3"></button>
-            </div>
+      <!-- HERO SLIDER -->
+      <div>
+        <div class="hero-slider">
+          <div class="hero-slide is-active">
+            <img src="careloop-vehicle-exterior.jpg" alt="">
+          </div>
+          <div class="hero-slide">
+            <img src="driver-assisting-wheelchair.jpg" alt="">
+          </div>
+          <div class="hero-slide">
+            <img src="wheelchair-ramp-securement.jpg" alt="">
           </div>
 
-          <div>
-            <h2>At-a-glance</h2>
-            <div class="hero-card-main">
-              Non-emergency medical transportation focused on comfort, reliability, and respect for every rider.
-            </div>
+          <div class="hero-slider-dots">
+            <button class="hero-slider-dot is-active"></button>
+            <button class="hero-slider-dot"></button>
+            <button class="hero-slider-dot"></button>
           </div>
-          <div class="hero-card-kv">
-            <div class="kv-item">
-              <span>Service area</span>
-              <span>Snohomish &amp; King County</span>
-            </div>
-            <div class="kv-item">
-              <span>Mobility types</span>
-              <span>Ambulatory &amp; wheelchair</span>
-            </div>
-            <div class="kv-item">
-              <span>Booking</span>
-              <span>Phone &amp; online form</span>
-            </div>
-            <div class="kv-item">
-              <span>Contact</span>
-              <span><a href="tel:5136074349">513-607-4349</a></span>
-            </div>
-          </div>
-          <div class="hero-card-footer">
-            We currently specialize in ambulatory and wheelchair transportation. If you’re unsure whether we can safely
-            accommodate your needs, call us and we’ll be happy to help.
-          </div>
-        </aside>
+        </div>
       </div>
     </section>
+
 
     <!-- SERVICES -->
     <section id="services">
       <div class="section-header">
         <div class="section-eyebrow">Services</div>
         <h2 class="section-title">What we help you get to</h2>
-        <p class="section-subtitle">
-          We provide non-emergency transportation for a wide range of medical and health-related appointments.
-        </p>
+        <p class="section-subtitle">Dependable, assisted transportation for medical visits, recurring treatments, and rehabilitation appointments.</p>
+      </div>
+
+      <div class="pill-list" style="margin-bottom:1.2rem;">
+        <span class="pill">Medical appointments</span>
+        <span class="pill">Recurring treatments</span>
+        <span class="pill">Rehab & therapy</span>
+        <span class="pill">Wheelchair & ambulatory</span>
       </div>
 
       <div class="cards-grid">
+
         <article class="card">
-          <h3>Appointments &amp; checkups</h3>
-          <p>
-            Reliable rides to primary care visits, specialist appointments, follow-ups, and routine checkups.
-          </p>
+          <h3>Appointments & checkups</h3>
+          <p>Transportation for primary care, specialists, checkups, and follow-ups.</p>
+          <ul style="padding-left:1.1rem; margin-top:0.6rem; font-size:0.86rem; color:var(--muted);">
+            <li>Door-to-door pickup</li>
+            <li>Assistive support</li>
+          </ul>
         </article>
 
         <article class="card">
-          <h3>Dialysis &amp; oncology</h3>
-          <p>
-            Consistent transportation for recurring treatments such as dialysis, chemotherapy, radiation, and infusion therapy.
-          </p>
+          <h3>Dialysis & oncology</h3>
+          <p>Consistent on-time rides for dialysis, chemo, infusion therapy, and recurring treatments.</p>
+          <ul style="padding-left:1.1rem; margin-top:0.6rem; font-size:0.86rem; color:var(--muted);">
+            <li>Coordinated around treatment times</li>
+            <li>Return-trip scheduling available</li>
+          </ul>
         </article>
 
         <article class="card">
-          <h3>Therapy &amp; rehab</h3>
-          <p>
-            Transportation to physical therapy, occupational therapy, rehab centers, and outpatient procedures.
-          </p>
+          <h3>Therapy & rehab</h3>
+          <p>Transportation for physical therapy, occupational therapy, rehab centers, and outpatient procedures.</p>
+          <ul style="padding-left:1.1rem; margin-top:0.6rem; color:var(--muted); font-size:0.86rem;">
+            <li>Support for recurring therapy schedules</li>
+            <li>Assistance to facility entrances</li>
+          </ul>
         </article>
 
         <article class="card">
           <h3>Mobility options</h3>
-          <p>
-            We currently serve ambulatory and wheelchair riders, with vehicles equipped for safe wheelchair securement and
-            door-to-door assistance. For stretcher or emergency transport, please contact an appropriate ambulance service
-            or call 911 in an emergency.
-          </p>
-          <div class="pill-list">
+          <p>Ambulatory & wheelchair transportation with safe securement. No stretcher services.</p>
+          <div class="pill-list" style="margin-top:0.6rem;">
             <span class="pill">Ambulatory</span>
             <span class="pill">Wheelchair</span>
             <span class="pill">Door-to-door assistance</span>
           </div>
         </article>
+
       </div>
     </section>
+
+
+    <!-- CLINICS & CARE TEAMS -->
+    <section id="clinics">
+      <div class="section-header">
+        <div class="section-eyebrow">For Clinics & Care Teams</div>
+        <h2 class="section-title">Transportation support for your patients</h2>
+        <p class="section-subtitle">
+          We partner with clinics, hospitals, and care teams to ensure patients have safe, accessible transportation to and from their appointments.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <h3>Recurring treatment schedules</h3>
+          <p>
+            Reliable transportation coordinated around treatment times for dialysis, oncology, infusion, and rehab patients.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Door-to-door assistance</h3>
+          <p>
+            Safe support from entrance to vehicle and back, including mobility and wheelchair assistance.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Simple coordination</h3>
+          <p>
+            Your staff can call or submit ride requests online. Our team handles confirmation with the patient or caregiver.
+          </p>
+        </article>
+      </div>
+    </section>
+
 
     <!-- SERVICE AREA -->
     <section id="service-area">
       <div class="section-header">
         <div class="section-eyebrow">Service Area</div>
-        <h2 class="section-title">Serving Snohomish &amp; King County</h2>
+        <h2 class="section-title">Serving Snohomish & King County</h2>
         <p class="section-subtitle">
-          If you’re not sure whether your pickup or drop-off location is covered, give us a quick call and we’ll gladly confirm.
+          We proudly serve patients and facilities throughout both counties. Not sure if you're in our coverage area? Contact us anytime.
         </p>
       </div>
 
       <div class="cards-grid">
+
         <article class="card">
           <h3>Snohomish County</h3>
-          <p>
-            We serve major communities and surrounding areas throughout Snohomish County. Call to confirm coverage for your address.
-          </p>
+          <p>Service to major clinics and hospitals throughout Snohomish County. Call to confirm coverage.</p>
         </article>
+
         <article class="card">
           <h3>King County</h3>
-          <p>
-            Transportation to and from medical providers, hospitals, and clinics across King County.
-          </p>
+          <p>Reliable transportation for appointments, treatments, and facility visits across King County.</p>
         </article>
+
       </div>
     </section>
 
-    <!-- BOOK / FORM -->
+
+    <!-- BOOK A RIDE -->
     <section id="book">
       <div class="section-header">
         <div class="section-eyebrow">Book a Ride</div>
-        <h2 class="section-title">Call us or request a ride online</h2>
+        <h2 class="section-title">Schedule Your Ride With CareLoop Mobility</h2>
         <p class="section-subtitle">
-          The fastest way to schedule is to call. You can also send us a ride request using our secure online form.
+          Our team is here to help you schedule appointments smoothly and ensure you get to your destination safely and on time.
         </p>
       </div>
 
-     <div class="contact-grid">
-  <!-- Left: booking details -->
-  <div class="contact-box">
-    <p><strong>1. Call to book</strong></p>
-    <p>
-      📞 <strong><a href="tel:5136074349">513-607-4349</a></strong><br>
-      Call to schedule a new ride, update an existing trip, or ask questions about our services.
-    </p>
-    <br>
-    <p><strong>2. Request a ride online</strong></p>
-    <p>
-      Use our secure Google Form to submit a ride request. We will contact you at the phone number provided
-      to confirm your trip.
-    </p>
-    <br>
-    <a class="btn btn-primary" href="https://forms.gle/MzFVfE5mA1DXkaAG8" target="_blank" rel="noopener">
-      Open Ride Request Form
-    </a>
-  </div>
+      <div class="contact-grid">
 
-  <!-- Right: photo to fill the space -->
-  <div class="contact-box" style="padding:0; overflow:hidden;">
-    <img
-      src="driver-assisting-wheelchair.jpg"
-      alt="CareLoop Mobility driver assisting a rider to and from their medical appointment"
-      style="width:100%; height:100%; object-fit:cover; border-radius:18px;"
-    >
-  </div>
-</div>
+        <div class="contact-box">
+          <div class="pill-list" style="margin-bottom:1rem;">
+            <span class="pill">Door-to-door assistance</span>
+            <span class="pill">Ambulatory & wheelchair</span>
+            <span class="pill">Medical rides</span>
+          </div>
 
+          <p><strong>1. Call to Schedule</strong></p>
+          <p>
+            Speak with our coordination team to schedule your ride, update a trip, or ask about service availability. We're here to ensure every ride is smooth, safe, and on time.
+          </p>
+
+          <a class="btn btn-primary" href="tel:5136074349" style="margin:1rem 0;">
+            📞 Call Now
+          </a>
+
+          <p><strong>2. Request a Ride Online</strong></p>
+          <p>
+            Prefer to submit details electronically? Use our secure form. We’ll contact you to confirm your pickup time and appointment details.
+          </p>
+
+          <a class="btn btn-ghost" href="https://forms.gle/MzFVfE5mA1DXkaAG8" target="_blank">
+            📋 Submit Ride Request
+          </a>
+
+          <p style="margin-top:0.8rem; font-size:0.8rem; color:var(--muted);">
+            We recommend scheduling rides 24–48 hours in advance.
+          </p>
+        </div>
+
+        <div class="contact-box" style="padding:0; overflow:hidden;">
+          <img src="driver-assisting-wheelchair.jpg" style="width:100%; height:100%; object-fit:cover; border-radius:18px;">
+        </div>
+
+      </div>
     </section>
+
 
     <!-- FAQ -->
     <section id="faq">
       <div class="section-header">
         <div class="section-eyebrow">FAQ</div>
-        <h2 class="section-title">Frequently asked questions</h2>
-        <p class="section-subtitle">
-          A few quick answers to common questions about CareLoop Mobility and our NEMT services.
-        </p>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Quick answers to common questions about CareLoop Mobility and our services.</p>
       </div>
 
       <div class="faq-list">
+
         <div class="faq-item">
-          <h3>How far in advance should I schedule a ride?</h3>
-          <p>
-            We recommend scheduling at least 24–48 hours in advance whenever possible. Same-day trips may be available
-            depending on schedule and location—call us to check availability.
-          </p>
+          <h3>How far in advance should I schedule?</h3>
+          <p>24–48 hours is recommended. Same-day availability varies by schedule and location.</p>
         </div>
 
         <div class="faq-item">
-          <h3>What types of riders can you transport?</h3>
-          <p>
-            We currently serve ambulatory riders (able to walk with or without assistance) and wheelchair users.
-            For stretcher or emergency transport, please contact an appropriate ambulance service or call 911 in an emergency.
-          </p>
+          <h3>What types of riders do you serve?</h3>
+          <p>We support ambulatory and wheelchair riders. We do not offer stretcher or emergency transport.</p>
         </div>
 
         <div class="faq-item">
-          <h3>Is this an emergency service?</h3>
-          <p>
-            No. CareLoop Mobility provides <strong>non-emergency</strong> transportation only. If you are experiencing a
-            medical emergency, please call 911 immediately.
-          </p>
+          <h3>Do you work with clinics?</h3>
+          <p>Yes — we coordinate with clinics, hospitals, and care teams for recurring treatments and discharge rides.</p>
         </div>
 
         <div class="faq-item">
-          <h3>Can I bring a family member or caregiver with me?</h3>
-          <p>
-            Yes. One caregiver or family member may ride with you at no additional charge, as long as seating is
-            available and we are notified when you book the trip.
-          </p>
+          <h3>Can a caregiver ride along?</h3>
+          <p>Yes. One caregiver may ride at no additional cost when seating is available.</p>
         </div>
 
         <div class="faq-item">
-          <h3>How long will the driver wait for me?</h3>
-          <p>
-            Our drivers typically wait up to 10–15 minutes at the pickup location. If you are running late, please call
-            us as soon as possible so we can coordinate and avoid delays.
-          </p>
+          <h3>Do you schedule return trips?</h3>
+          <p>Yes. We can coordinate return rides based on appointment length or facility discharge time.</p>
         </div>
 
         <div class="faq-item">
-          <h3>What is your cancellation policy?</h3>
-          <p>
-            If you need to cancel or reschedule, please call us as soon as you know—ideally at least 24 hours before your
-            pickup time—so we can adjust our schedule and support other riders.
-          </p>
+          <h3>What’s your cancellation policy?</h3>
+          <p>Please notify us as early as possible (ideally 24 hours) to adjust our schedule.</p>
         </div>
 
-        <div class="faq-item">
-          <h3>What happens after I submit the online request form?</h3>
-          <p>
-            After you send a request through the form, we review the details and call you at the phone number you
-            provide to confirm pickup time, location, and any special needs before the trip is officially booked.
-          </p>
-        </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
+
+    <!-- ABOUT US -->
     <section id="about">
       <div class="section-header">
         <div class="section-eyebrow">About Us</div>
-        <h2 class="section-title">Compassionate transportation, every trip</h2>
+        <h2 class="section-title">Compassionate Transportation, Every Trip</h2>
         <p class="section-subtitle">
-          CareLoop Mobility was created to make non-emergency medical transportation simpler, safer, and more dependable for our community.
+          CareLoop Mobility was created to make non-emergency medical transportation safer, easier, and more dependable for our community.
         </p>
       </div>
 
       <div class="cards-grid">
+
         <article class="card">
           <h3>Our mission</h3>
-          <p>
-            To remove transportation as a barrier to care by providing respectful, on-time, door-to-door service
-            for every rider, at every appointment.
-          </p>
+          <p>We remove transportation barriers to healthcare by providing respectful, on-time, and safe service for every rider.</p>
         </article>
+
         <article class="card">
           <h3>How we work</h3>
-          <p>
-            Our drivers provide door-to-door assistance, taking the time to ensure each rider feels safe, supported,
-            and respected throughout their trip.
-          </p>
+          <p>Our trained drivers provide assisted, door-to-door service, allowing extra time and support for riders with mobility needs or assistive devices.</p>
         </article>
-        <article class="card">
-          <h3>Why riders &amp; clinics choose us</h3>
-          <p>
-            We focus on reliability, safety, and communication so riders and care teams can count on us.
-          </p>
-          <ul style="margin-top:0.5rem; padding-left:1.1rem; color:#6b7280; font-size:0.86rem;">
-            <li>On-time, door-to-door pickups and drop-offs</li>
-            <li>Drivers trained to assist ambulatory and wheelchair riders</li>
-            <li>Wheelchair-secure vehicles and regular safety checks</li>
-            <li>Simple booking by phone or secure online form</li>
-            <li>One caregiver or family member rides at no extra charge (when seating is available)</li>
-          </ul>
-        </article>
+
       </div>
     </section>
+
 
     <!-- CONTACT -->
     <section id="contact">
@@ -914,71 +561,60 @@
         <div class="section-eyebrow">Contact</div>
         <h2 class="section-title">Get in touch</h2>
         <p class="section-subtitle">
-          Have questions about coverage, schedules, or mobility needs? Reach out and we’ll be glad to help.
+          Whether you’re scheduling a ride, confirming coverage, or coordinating care for a patient, our team is ready to help.
         </p>
       </div>
 
       <div class="cards-grid">
+
         <article class="card">
           <h3>Phone</h3>
           <p>
-            📞 <strong><a href="tel:5136074349">513-607-4349</a></strong><br>
-            Call to book, reschedule, or ask about service availability.
+            <strong>📞 <a href="tel:5136074349">Call Now</a></strong><br>
+            Speak with our coordination team to book, reschedule, or ask about availability.
           </p>
         </article>
+
         <article class="card">
-          <h3>Service area</h3>
+          <h3>Service Area</h3>
           <p>
-            Snohomish County &amp; King County<br>
-            For locations outside these areas, call us to discuss options.
+            Snohomish & King County<br>
+            Call us to confirm coverage for your pickup or drop-off location.
           </p>
         </article>
+
       </div>
     </section>
+
   </div>
 </main>
+
 
 <footer>
   <div class="container">
     <span>© <span id="year"></span> CareLoop Mobility. All rights reserved.</span>
-    <span>Non-Emergency Medical Transportation • Snohomish &amp; King County</span>
+    <span>Non-Emergency Medical Transportation • Snohomish & King County</span>
   </div>
 </footer>
 
+
 <script>
-  // Set current year in footer
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Hero slider logic
-  (function () {
+  (function(){
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.hero-slider-dot');
-    if (!slides.length || !dots.length) return;
+    let current = 0;
 
-    let currentIndex = 0;
-    const total = slides.length;
-    const intervalMs = 6000; // 6 seconds per slide
-
-    function goToSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('is-active', i === index);
-      });
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('is-active', i === index);
-      });
-      currentIndex = index;
+    function go(i){
+      slides.forEach((s,idx)=>s.classList.toggle('is-active',idx===i));
+      dots.forEach((d,idx)=>d.classList.toggle('is-active',idx===i));
+      current = i;
     }
 
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        goToSlide(index);
-      });
-    });
+    dots.forEach((dot,i)=>dot.addEventListener('click',()=>go(i)));
 
-    setInterval(() => {
-      const nextIndex = (currentIndex + 1) % total;
-      goToSlide(nextIndex);
-    }, intervalMs);
+    setInterval(()=>go((current+1)%slides.length),6000);
   })();
 </script>
 
