@@ -1,645 +1,602 @@
-import React, { useMemo, useState } from 'react';
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CareLoop Mobility – Non-Emergency Medical Transportation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="CareLoop Mobility provides safe, reliable ambulatory and wheelchair non-emergency medical transportation in Snohomish and King County. Call or request a ride online.">
 
-/************************************
- * Inline SVG Icons (no external CDN)
- ************************************/
-const Svg = ({ children, className = "h-5 w-5", color = "currentColor", viewBox = "0 0 24 24", title }) => (
-  <svg
-    aria-hidden={title ? undefined : true}
-    role={title ? "img" : "presentation"}
-    viewBox={viewBox}
-    className={className}
-    fill="none"
-    stroke={color}
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    {title ? <title>{title}</title> : null}
-    {children}
-  </svg>
-);
-const IconCheck = (props) => (
-  <Svg {...props}>
-    <path d="M20 6L9 17l-5-5" />
-  </Svg>
-);
-const IconPhone = (props) => (
-  <Svg {...props}>
-    <path d="M22 16.92v2a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.1 4.18 2 2 0 0 1 5.11 2h2a2 2 0 0 1 2 1.72c.12.89.31 1.76.58 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.15a2 2 0 0 1 2.11-.45c.84.27 1.71.46 2.6.58A2 2 0 0 1 22 16.92z" />
-  </Svg>
-);
-const IconMapPin = (props) => (
-  <Svg {...props}>
-    <path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z" />
-    <circle cx="12" cy="10" r="3" />
-  </Svg>
-);
-const IconWheelchair = (props) => (
-  <Svg {...props}>
-    <circle cx="7" cy="17" r="3" />
-    <path d="M14 7a2 2 0 1 0-4 0v5h4l3 6" />
-    <path d="M6 14l2-2" />
-    <path d="M13 12h4" />
-  </Svg>
-);
-const IconCar = (props) => (
-  <Svg {...props}>
-    <path d="M3 13l2-5a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 5" />
-    <path d="M5 13h14" />
-    <circle cx="7.5" cy="16.5" r="1.5" />
-    <circle cx="16.5" cy="16.5" r="1.5" />
-  </Svg>
-);
-const IconUsers = (props) => (
-  <Svg {...props}>
-    <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
-    <circle cx="9" cy="7" r="4" />
-    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-  </Svg>
-);
-const IconShieldCheck = (props) => (
-  <Svg {...props}>
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    <path d="M9 12l2 2 4-4" />
-  </Svg>
-);
-const IconArrowRight = (props) => (
-  <Svg {...props}>
-    <path d="M5 12h14" />
-    <path d="M12 5l7 7-7 7" />
-  </Svg>
-);
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-/************************************
- * Brand palettes – PRIMARY matches uploaded logo
- ************************************/
-const palettes = {
-  Primary: {
-    name: "Primary (Brand Logo)",
-    bg: "#FFFFFF",
-    // Teal from wordmark
-    brand: "#00857A",
-    // Navy from "Mobility" / tagline
-    brandDark: "#003A5D",
-    // Red from pin symbol
-    accent: "#E53935",
-    // Body text
-    text: "#102A43",
-    // Light section background
-    subtle: "#F5F7FA",
-    // Tagline / secondary text
-    tagline: "#003A5D",
-  },
-  Calm: {
-    name: "Healthcare Calm",
-    bg: "#FFFFFF",
-    brand: "#1ABC9C",
-    brandDark: "#128E76",
-    accent: "#E74C3C",
-    text: "#1F2937",
-    subtle: "#F3F4F6",
-    tagline: "#2C3E50",
-  },
-  Trust: {
-    name: "Modern Trust",
-    bg: "#FFFFFF",
-    brand: "#1A237E",
-    brandDark: "#121A5F",
-    accent: "#2ECC71",
-    text: "#111827",
-    subtle: "#F5F5F5",
-    tagline: "#1F2937",
-  },
-};
+  <style>
+    :root {
+      --primary: #ef3b2d;
+      --primary-dark: #c52f24;
+      --accent: #0b4f7f;
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --surface-soft: #f9fafb;
+      --border-subtle: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --radius-lg: 18px;
+      --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.08);
+    }
 
-/************************************
- * Lightweight self-checks ("tests")
- ************************************/
-function useSmokeTests() {
-  return useMemo(() => {
-    const tests = [
-      { name: "Palette: Primary exists", pass: !!palettes.Primary },
-      {
-        name: "Icon components exist",
-        pass: [
-          IconMapPin,
-          IconWheelchair,
-          IconPhone,
-          IconCar,
-          IconUsers,
-          IconShieldCheck,
-          IconArrowRight,
-          IconCheck,
-        ].every(Boolean),
-      },
-      { name: "Tel link format", pass: /^tel:\\d+/.test("tel:12064721001") },
-      {
-        name: "Color contrast tokens present",
-        pass: !!palettes.Primary.text && !!palettes.Primary.bg,
-      },
-    ];
-    return tests;
-  }, []);
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-export default function CareLoopRedesign() {
-  const [mode, setMode] = useState("Primary");
-  const p = palettes[mode];
-  const tests = useSmokeTests();
+    body {
+      font-family: "Inter", system-ui;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  return (
-    <div style={{ background: p.bg, color: p.text }} className="min-h-screen font-sans">
-      {/* Top Bar */}
-      <header
-        className="sticky top-0 z-40 border-b"
-        style={{ borderColor: p.subtle, background: "rgba(255,255,255,0.96)" }}
-      >
-        <div className="max-w-6xl mx-auto flex items-center justify-between gap-3 px-4 py-3">
-          {/* REAL logo lockup using uploaded asset */}
-          <div className="flex items-center gap-3">
-            <img
-              src="/mnt/data/log.png"
-              alt="CareLoop Mobility logo"
-              className="h-10 w-auto"
-            />
-          </div>
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            <a className="hover:underline" href="#services">
-              Services
-            </a>
-            <a className="hover:underline" href="#area">
-              Service Area
-            </a>
-            <a className="hover:underline" href="#faq">
-              FAQ
-            </a>
-            <a className="hover:underline" href="#contact">
-              Contact
-            </a>
-          </nav>
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
 
-          <div className="flex items-center gap-3">
-            <select
-              value={mode}
-              onChange={(e) => setMode(e.target.value)}
-              className="text-sm border rounded-md px-2 py-1"
-              style={{ borderColor: p.subtle }}
-            >
-              <option value="Primary">Brand Colors</option>
-              <option value="Calm">Healthcare Calm</option>
-              <option value="Trust">Modern Trust</option>
-            </select>
-            <a href="tel:12064721001">
-              <Button className="rounded-xl" style={{ background: p.accent }}>
-                Call Now
-              </Button>
-            </a>
-          </div>
-        </div>
-      </header>
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+    }
 
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-4 py-14">
-          <div>
-            <h1
-              className="text-3xl md:text-5xl font-bold leading-tight"
-              style={{ color: p.brandDark }}
-            >
-              Safe, reliable rides to your medical appointments
-            </h1>
-            <p
-              className="mt-4 text-base md:text-lg"
-              style={{ color: p.tagline }}
-            >
-              Door-to-door ambulatory and wheelchair transportation across
-              Snohomish & King County.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#book">
-                <Button
-                  className="rounded-xl px-5 py-6 text-base"
-                  style={{ background: p.brand }}
-                >
-                  Request a Ride
-                </Button>
-              </a>
-              <a href="tel:12064721001">
-                <Button
-                  className="rounded-xl px-5 py-6 text-base"
-                  variant="outline"
-                  style={{ borderColor: p.brand, color: p.brand }}
-                >
-                  <IconPhone className="h-4 w-4 mr-2" /> 206‑472‑1001
-                </Button>
-              </a>
-            </div>
-            <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
-              {[
-                { icon: <IconShieldCheck className="h-4 w-4" />, label: "On‑time & insured" },
-                { icon: <IconUsers className="h-4 w-4" />, label: "Caregiver rides free" },
-                {
-                  icon: <IconWheelchair className="h-4 w-4" />,
-                  label: "Wheelchair & ambulatory",
-                },
-              ].map((f, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg"
-                  style={{ background: p.subtle }}
-                >
-                  <div style={{ color: p.brand }}>{f.icon}</div>
-                  <span>{f.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <Card className="rounded-2xl shadow-lg">
-              <CardContent className="p-6">
-                <h3
-                  className="text-xl font-semibold"
-                  style={{ color: p.brandDark }}
-                >
-                  Quick Ride Request
-                </h3>
-                <p className="text-sm mt-1" style={{ color: p.tagline }}>
-                  We’ll call to confirm your trip.
-                </p>
-                <form
-                  className="mt-4 grid grid-cols-1 gap-3"
-                  onSubmit={(e) => e.preventDefault()}
-                >
-                  <input
-                    className="border rounded-lg px-3 py-2"
-                    placeholder="Your Name"
-                  />
-                  <input
-                    className="border rounded-lg px-3 py-2"
-                    placeholder="Phone Number"
-                  />
-                  <input
-                    className="border rounded-lg px-3 py-2"
-                    placeholder="Pickup Address"
-                  />
-                  <input
-                    className="border rounded-lg px-3 py-2"
-                    placeholder="Destination"
-                  />
-                  <Button
-                    className="rounded-xl mt-2"
-                    style={{ background: p.brand }}
-                  >
-                    Submit Request
-                  </Button>
-                </form>
-                <div className="mt-4 text-xs" style={{ color: p.tagline }}>
-                  Or call
-                  <a className="underline ml-1" href="tel:12064721001">
-                    206‑472‑1001
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
 
-      {/* At a Glance */}
-      {/* Story images / real riders */}
-      <section className="py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2
-            className="text-2xl md:text-3xl font-bold"
-            style={{ color: p.brandDark }}
-          >
-            See CareLoop in action
-          </h2>
-          <p className="mt-2 text-sm md:text-base" style={{ color: p.tagline }}>
-            Real moments from non-emergency medical rides: helping riders into the van, supporting them on the way, and
-            arriving safely at clinics and community locations.
-          </p>
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
-            <Card className="rounded-2xl overflow-hidden shadow-sm">
-              <img
-                src="https://images.pexels.com/photos/7551670/pexels-photo-7551670.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Driver assisting an older Black rider in a wheelchair into a medical transport van"
-                className="h-48 w-full object-cover"
-              />
-              <CardContent className="p-4">
-                <h3 className="font-semibold" style={{ color: p.brandDark }}>
-                  Gentle, supported pickup
-                </h3>
-                <p className="mt-1 text-sm" style={{ color: p.tagline }}>
-                  Drivers help riders and caregivers get safely from the front door into the vehicle.
-                </p>
-              </CardContent>
-            </Card>
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
 
-            <Card className="rounded-2xl overflow-hidden shadow-sm">
-              <img
-                src="https://images.pexels.com/photos/6129686/pexels-photo-6129686.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Smiling rider of color seated in a wheelchair inside a clean transport van"
-                className="h-48 w-full object-cover"
-              />
-              <CardContent className="p-4">
-                <h3 className="font-semibold" style={{ color: p.brandDark }}>
-                  Comfortable ride between visits
-                </h3>
-                <p className="mt-1 text-sm" style={{ color: p.tagline }}>
-                  Clean, secure vehicles for riders using wheelchairs, walkers, or ambulatory support.
-                </p>
-              </CardContent>
-            </Card>
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #111827;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-            <Card className="rounded-2xl overflow-hidden shadow-sm">
-              <img
-                src="https://images.pexels.com/photos/7551673/pexels-photo-7551673.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="CareLoop driver helping a diverse rider step down from the van at a clinic entrance"
-                className="h-48 w-full object-cover"
-              />
-              <CardContent className="p-4">
-                <h3 className="font-semibold" style={{ color: p.brandDark }}>
-                  Safe drop‑off at clinics
-                </h3>
-                <p className="mt-1 text-sm" style={{ color: p.tagline }}>
-                  Door-to-door service to hospitals, clinics, dialysis centers, and therapy appointments.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-      {/* At a Glance */}
-      <section className="py-12" style={{ background: p.subtle }}>
-        <div className="max-w-6xl mx-auto px-4">
-          <h2
-            className="text-2xl md:text-3xl font-bold"
-            style={{ color: p.brandDark }}
-          >
-            At‑a‑Glance
-          </h2>
-          <div className="mt-6 grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Service Area",
-                text: "Snohomish & King County",
-                icon: <IconMapPin className="h-5 w-5" />,
-              },
-              {
-                title: "Mobility Types",
-                text: "Ambulatory & Wheelchair (no stretcher)",
-                icon: <IconWheelchair className="h-5 w-5" />,
-              },
-              {
-                title: "Booking",
-                text: "Call or request online",
-                icon: <IconPhone className="h-5 w-5" />,
-              },
-            ].map((c, i) => (
-              <Card key={i} className="rounded-2xl">
-                <CardContent className="p-6">
-                  <div
-                    className="flex items-center gap-2"
-                    style={{ color: p.brand }}
-                  >
-                    {c.icon}
-                    <h3 className="font-semibold">{c.title}</h3>
-                  </div>
-                  <p className="mt-2 text-sm" style={{ color: p.tagline }}>
-                    {c.text}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+    nav ul {
+      display: flex;
+      gap: 1.35rem;
+      list-style: none;
+      font-size: 0.9rem;
+    }
 
-      {/* Services */}
-      <section id="services" className="py-14">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2
-            className="text-2xl md:text-3xl font-bold"
-            style={{ color: p.brandDark }}
-          >
-            What We Help You Get To
-          </h2>
-          <div className="mt-6 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                t: "Appointments & Checkups",
-                d: "Primary care, specialists, follow‑ups.",
-              },
-              {
-                t: "Dialysis & Oncology",
-                d: "Dialysis, chemo, radiation, infusion.",
-              },
-              { t: "Therapy & Rehab", d: "PT/OT, rehab centers, outpatient." },
-              { t: "Hospitals & Clinics", d: "Door‑to‑door assistance." },
-            ].map((s, i) => (
-              <Card
-                key={i}
-                className="rounded-2xl hover:shadow-lg transition-shadow"
-              >
-                <CardContent className="p-6">
-                  <div
-                    className="flex items-center gap-2"
-                    style={{ color: p.brand }}
-                  >
-                    <IconCar className="h-5 w-5" />
-                    <h3 className="font-semibold">{s.t}</h3>
-                  </div>
-                  <p className="mt-2 text-sm" style={{ color: p.tagline }}>
-                    {s.d}
-                  </p>
-                  <Button
-                    variant="ghost"
-                    className="mt-2 px-0 text-sm"
-                    style={{ color: p.brand }}
-                  >
-                    Learn more <IconArrowRight className="h-4 w-4 ml-1" />
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+    nav a { opacity: 0.8; font-weight: 500; }
+    nav a:hover { opacity: 1; }
 
-      {/* Social proof / compliance */}
-      <section className="py-12" style={{ background: p.subtle }}>
-        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6 items-stretch">
-          <Card className="rounded-2xl">
-            <CardContent className="p-6">
-              <h3
-                className="font-semibold"
-                style={{ color: p.brandDark }}
-              >
-                Why choose us
-              </h3>
-              <ul
-                className="mt-3 space-y-2 text-sm"
-                style={{ color: p.tagline }}
-              >
-                <li className="flex gap-2">
-                  <IconCheck
-                    style={{ color: p.brand }}
-                    className="h-4 w-4 mt-0.5"
-                  />
-                  On‑time, courteous drivers
-                </li>
-                <li className="flex gap-2">
-                  <IconCheck
-                    style={{ color: p.brand }}
-                    className="h-4 w-4 mt-0.5"
-                  />
-                  Wheelchair securement training
-                </li>
-                <li className="flex gap-2">
-                  <IconCheck
-                    style={{ color: p.brand }}
-                    className="h-4 w-4 mt-0.5"
-                  />
-                  Caregiver rides free
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-          <Card className="rounded-2xl">
-            <CardContent className="p-6">
-              <h3
-                className="font-semibold"
-                style={{ color: p.brandDark }}
-              >
-                Insurance & Payment
-              </h3>
-              <p className="mt-2 text-sm" style={{ color: p.tagline }}>
-                Private pay; ask us about partners & coverage options.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="rounded-2xl">
-            <CardContent className="p-6">
-              <h3
-                className="font-semibold"
-                style={{ color: p.brandDark }}
-              >
-                Safety & Compliance
-              </h3>
-              <p className="mt-2 text-sm" style={{ color: p.tagline }}>
-                Background‑checked drivers, regular vehicle inspections,
-                securement protocols.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+    .nav-cta a {
+      padding: 0.65rem 1.2rem;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 25px rgba(239,59,45,0.40);
+    }
 
-      {/* CTA */}
-      <section id="book" className="py-14">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2
-            className="text-2xl md:text-3xl font-bold"
-            style={{ color: p.brandDark }}
-          >
-            Ready to ride?
-          </h2>
-          <p className="mt-2" style={{ color: p.tagline }}>
-            Call now or request a ride online—we’ll confirm details by phone.
-          </p>
-          <div className="mt-4 flex items-center justify-center gap-3">
-            <a href="tel:12064721001">
-              <Button
-                className="rounded-xl px-6 py-6 text-base"
-                style={{ background: p.accent }}
-              >
-                <IconPhone className="h-4 w-4 mr-2" /> 206‑472‑1001
-              </Button>
-            </a>
-            <a href="#">
-              <Button
-                className="rounded-xl px-6 py-6 text-base"
-                style={{ background: p.brand }}
-              >
-                Open Ride Request Form
-              </Button>
-            </a>
-          </div>
-        </div>
-      </section>
+    /* HERO */
+    .hero {
+      padding: 3rem 0 2.5rem;
+      display: grid;
+      grid-template-columns: 1.3fr 1.1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
 
-      {/* Footer */}
-      <footer className="py-10" style={{ background: p.subtle }}>
-        <div
-          className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6 text-sm"
-          style={{ color: p.tagline }}
-        >
-          <div>
-            <div className="font-semibold" style={{ color: p.brandDark }}>
-              CareLoop Mobility
-            </div>
-            <p className="mt-1">
-              Non‑Emergency Medical Transportation • Snohomish & King County
-            </p>
-          </div>
-          <div>
-            <div className="font-semibold mb-1" style={{ color: p.brandDark }}>
-              Contact
-            </div>
-            <div>
-              Phone:
-              <a className="underline ml-1" href="tel:12064721001">
-                206‑472‑1001
-              </a>
-            </div>
-          </div>
-          <div>
-            <div className="font-semibold mb-1" style={{ color: p.brandDark }}>
-              Quick Links
-            </div>
-            <div className="flex flex-col gap-1">
-              <a className="hover:underline" href="#services">
-                Services
-              </a>
-              <a className="hover:underline" href="#area">
-                Service Area
-              </a>
-              <a className="hover:underline" href="#faq">
-                FAQ
-              </a>
-              <a className="hover:underline" href="#contact">
-                Contact
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+    .hero-title {
+      font-family: "Poppins";
+      font-size: clamp(2.1rem, 2.5vw + 1.2rem, 2.9rem);
+      margin-bottom: 1rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
 
-      {/* Inline Test Panel */}
-      <section className="py-6">
-        <div className="max-w-6xl mx-auto px-4">
-          <details>
-            <summary className="text-sm" style={{ color: p.tagline }}>
-              Diagnostics / Smoke Tests
-            </summary>
-            <ul className="mt-2 text-sm">
-              {tests.map((t, i) => (
-                <li key={i} className="flex items-center gap-2">
-                  <span>{t.pass ? "✅" : "❌"}</span>
-                  <span>{t.name}</span>
-                </li>
-              ))}
-            </ul>
-          </details>
-        </div>
-      </section>
+    .hero-title span { color: var(--primary); }
+
+    .hero-subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 1.4rem; }
+
+    .badge { display:inline-flex; align-items:center; padding:0.3rem 0.8rem; border-radius:999px; background:white; border:1px solid var(--border-subtle); font-size:0.78rem; margin-right:0.5rem; color:var(--muted); }
+
+    .hero-actions { display:flex; gap:0.8rem; flex-wrap:wrap; margin:1rem 0; }
+
+    .btn {
+      padding: 0.85rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 18px 38px rgba(239,59,45,0.32);
+    }
+
+    .btn-ghost {
+      background: white;
+      border: 1px solid var(--border-subtle);
+      color: var(--accent);
+    }
+
+    .hero-slider {
+      position: relative;
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: #e5e7eb;
+    }
+
+    .hero-slide {
+      position:absolute; inset:0; opacity:0;
+      transition: opacity .6s ease-in-out;
+    }
+
+    .hero-slide.is-active { opacity:1; }
+
+    .hero-slide img {
+      width:100%; height:100%; object-fit:cover;
+    }
+
+    .hero-slider-dots { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; gap:0.4rem; }
+
+    .hero-slider-dot {
+      width:8px; height:8px; border-radius:999px;
+      background:rgba(255,255,255,0.5);
+      border:1px solid rgba(15,23,42,0.25);
+      cursor:pointer;
+    }
+
+    .hero-slider-dot.is-active { background:white; }
+
+    /* Sections */
+    section { padding: 2.4rem 0 1rem; }
+
+    .section-header { margin-bottom:1.2rem; }
+
+    .section-eyebrow {
+      text-transform:uppercase;
+      font-size:0.7rem;
+      color:var(--accent);
+      letter-spacing:0.18em;
+      margin-bottom:0.4rem;
+      font-weight:600;
+    }
+
+    .section-title { font-family:"Poppins"; font-size:1.4rem; font-weight:600; margin-bottom:0.3rem; }
+
+    .section-subtitle { font-size:0.9rem; color:var(--muted); max-width:36rem; }
+
+    .cards-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:1.2rem;
+    }
+
+    .card, .contact-box {
+      background: white;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.3rem;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.03);
+      font-size:0.9rem;
+    }
+
+    .pill-list { display:flex; flex-wrap:wrap; gap:0.45rem; }
+    .pill {
+      background: var(--surface-soft);
+      border:1px solid var(--border-subtle);
+      border-radius:999px;
+      padding:0.3rem 0.7rem;
+      font-size:0.78rem; color:var(--muted);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1.2fr;
+      gap: 1.5rem;
+      align-items:flex-start;
+    }
+
+    /* FAQ */
+    .faq-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; }
+
+    .faq-item {
+      background: white;
+      padding:1rem 1.1rem;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border-subtle);
+      box-shadow:0 8px 20px rgba(15,23,42,0.02);
+      font-size:0.9rem;
+    }
+
+    footer {
+      margin-top:2rem; padding:2rem 0;
+      border-top:1px solid var(--border-subtle);
+      font-size:0.8rem; color:var(--muted); background:white;
+    }
+
+    @media(max-width:900px){
+      .hero { grid-template-columns:1fr; }
+      nav ul { display:none; }
+      .contact-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav-inner">
+    <div class="brand">
+      <div class="brand-logo"><img src="logo.png" alt="CareLoop Mobility logo"></div>
+      <div>
+        <strong>CareLoop Mobility</strong><br>
+        <span style="color:var(--muted); font-size:0.8rem;">NEMT • Snohomish & King County</span>
+      </div>
     </div>
-  );
-}
+
+    <nav>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#clinics">Clinics</a></li>
+        <li><a href="#service-area">Service Area</a></li>
+        <li><a href="#book">Book</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="tel:5136074349">Call Now</a>
+    </div>
+  </div>
+</header>
+
+
+<main>
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div>
+        <div class="section-eyebrow">Non-Emergency Medical Transportation</div>
+
+        <h1 class="hero-title">
+          Safe, Reliable Medical Transportation Across
+          <span>Snohomish & King County</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          CareLoop Mobility provides dependable ambulatory and wheelchair transportation for medical appointments, treatments, and therapy visits—delivered with professionalism, safety, and compassion.
+        </p>
+
+        <div>
+          <span class="badge">On-time, door-to-door service</span>
+          <span class="badge">Ambulatory & wheelchair support</span>
+          <span class="badge">Professional drivers</span>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:5136074349">📞 Call Now</a>
+          <a class="btn btn-ghost" href="#book">📋 Request a Ride</a>
+        </div>
+
+        <p style="font-size:0.8rem; color:var(--muted);">
+          Serving clinics, hospitals, dialysis centers, rehab providers, and specialists across Snohomish & King County.
+        </p>
+      </div>
+
+      <!-- HERO SLIDER -->
+      <div>
+        <div class="hero-slider">
+          <div class="hero-slide is-active">
+            <img src="careloop-vehicle-exterior.jpg" alt="Medical transportation vehicle">
+          </div>
+
+          <div class="hero-slide">
+            <img src="driver-assisting-wheelchair.jpg" alt="Driver assisting wheelchair passenger">
+          </div>
+
+          <div class="hero-slide">
+            <img src="wheelchair-ramp-securement.jpg" alt="Wheelchair securement system">
+          </div>
+
+          <div class="hero-slider-dots">
+            <button class="hero-slider-dot is-active"></button>
+            <button class="hero-slider-dot"></button>
+            <button class="hero-slider-dot"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="section-header">
+        <div class="section-eyebrow">Services</div>
+        <h2 class="section-title">What we help you get to</h2>
+        <p class="section-subtitle">Dependable, assisted transportation for medical visits, recurring treatments, and rehabilitation appointments.</p>
+      </div>
+
+      <div class="pill-list" style="margin-bottom:1.2rem;">
+        <span class="pill">Medical appointments</span>
+        <span class="pill">Recurring treatments</span>
+        <span class="pill">Rehab & therapy</span>
+        <span class="pill">Wheelchair & ambulatory</span>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <h3>Appointments & checkups</h3>
+          <p>Transportation for primary care, specialists, checkups, and follow-ups.</p>
+        </article>
+
+        <article class="card">
+          <h3>Dialysis & oncology</h3>
+          <p>Consistent on-time rides for dialysis, chemo, infusion therapy, and recurring treatments.</p>
+        </article>
+
+        <article class="card">
+          <h3>Therapy & rehab</h3>
+          <p>Transportation for physical therapy, occupational therapy, rehab centers, and outpatient procedures.</p>
+        </article>
+
+        <article class="card">
+          <h3>Mobility options</h3>
+          <p>Ambulatory & wheelchair transportation with safe securement. No stretcher services.</p>
+          <div class="pill-list" style="margin-top:0.6rem;">
+            <span class="pill">Ambulatory</span>
+            <span class="pill">Wheelchair</span>
+            <span class="pill">Door-to-door assistance</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CLINICS -->
+    <section id="clinics">
+      <div class="section-header">
+        <div class="section-eyebrow">For Clinics & Care Teams</div>
+        <h2 class="section-title">Transportation support for your patients</h2>
+        <p class="section-subtitle">
+          We partner with clinics, hospitals, and care teams to ensure patients have safe, accessible transportation to and from their appointments.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <h3>Recurring treatment schedules</h3>
+          <p>Reliable transportation coordinated around treatment times for dialysis, oncology, infusion, and rehab patients.</p>
+        </article>
+
+        <article class="card">
+          <h3>Door-to-door assistance</h3>
+          <p>Safe support from entrance to vehicle and back, including mobility and wheelchair assistance.</p>
+        </article>
+
+        <article class="card">
+          <h3>Simple coordination</h3>
+          <p>Your staff can call or submit ride requests online. Our team handles confirmation with the patient or caregiver.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SERVICE AREA -->
+    <section id="service-area">
+      <div class="section-header">
+        <div class="section-eyebrow">Service Area</div>
+        <h2 class="section-title">Serving Snohomish & King County</h2>
+        <p class="section-subtitle">
+          We proudly serve patients and facilities throughout both counties. Not sure if you're in our coverage area? Contact us anytime.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <h3>Snohomish County</h3>
+          <p>Service to major clinics and hospitals throughout Snohomish County. Call to confirm coverage.</p>
+        </article>
+
+        <article class="card">
+          <h3>King County</h3>
+          <p>Reliable transportation for appointments, treatments, and facility visits across King County.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- BOOK -->
+    <section id="book">
+      <div class="section-header">
+        <div class="section-eyebrow">Book a Ride</div>
+        <h2 class="section-title">Schedule Your Ride With CareLoop Mobility</h2>
+        <p class="section-subtitle">
+          Our team is here to help you schedule appointments smoothly and ensure you get to your destination safely and on time.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-box">
+          <div class="pill-list" style="margin-bottom:1rem;">
+            <span class="pill">Door-to-door assistance</span>
+            <span class="pill">Ambulatory & wheelchair</span>
+            <span class="pill">Medical rides</span>
+          </div>
+
+          <p><strong>1. Call to Schedule</strong></p>
+          <p>Speak with our coordination team to schedule your ride or ask about availability.</p>
+
+          <a class="btn btn-primary" href="tel:5136074349" style="margin:1rem 0;">📞 Call Now</a>
+
+          <p><strong>2. Request a Ride Online</strong></p>
+          <p>Prefer to submit details electronically? Use our form. We'll confirm your pickup time shortly.</p>
+
+          <a class="btn btn-ghost" href="https://forms.gle/MzFVfE5mA1DXkaAG8" target="_blank">📋 Submit Ride Request</a>
+
+          <p style="margin-top:0.8rem; font-size:0.8rem; color:var(--muted);">We recommend scheduling rides 24–48 hours in advance.</p>
+        </div>
+
+        <div class="contact-box" style="padding:0; overflow:hidden;">
+          <img src="driver-assisting-wheelchair.jpg" alt="Driver assisting wheelchair passenger" style="width:100%; height:100%; object-fit:cover; border-radius:18px;">
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="section-header">
+        <div class="section-eyebrow">FAQ</div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Quick answers to common questions about CareLoop Mobility and our services.</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>How far in advance should I schedule?</h3>
+          <p>24–48 hours is recommended. Same-day availability varies.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What types of riders do you serve?</h3>
+          <p>We support ambulatory and wheelchair riders. No emergency transport.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Do you work with clinics?</h3>
+          <p>Yes — for recurring treatments and discharge rides.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Can a caregiver ride along?</h3>
+          <p>Yes. One caregiver may ride at no cost.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Do you schedule return trips?</h3>
+          <p>Yes. We coordinate based on appointment length or discharge time.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What’s your cancellation policy?</h3>
+          <p>Please notify us as early as possible.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-header">
+        <div class="section-eyebrow">About Us</div>
+        <h2 class="section-title">Compassionate Transportation, Every Trip</h2>
+        <p class="section-subtitle">
+          CareLoop Mobility was created to make medical transportation safer, easier, and dependable for our community.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <h3>Our mission</h3>
+          <p>We remove transportation barriers to healthcare by providing respectful, on-time, and safe service for every rider.</p>
+        </article>
+
+        <article class="card">
+          <h3>How we work</h3>
+          <p>Our trained drivers provide assisted, door-to-door service, allowing extra time and support for riders with mobility needs.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <div class="section-eyebrow">Contact</div>
+        <h2 class="section-title">Get in touch</h2>
+        <p class="section-subtitle">
+          Whether you’re scheduling a ride, confirming coverage, or coordinating care for a patient, we’re ready to help.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <h3>Phone</h3>
+          <p><strong>📞 <a href="tel:5136074349">Call Now</a></strong></p>
+          <p>Speak with our coordination team for bookings and inquiries.</p>
+        </article>
+
+        <article class="card">
+          <h3>Service Area</h3>
+          <p>Snohomish & King County<br>Call to confirm your pickup area.</p>
+        </article>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <span>© <span id="year"></span> CareLoop Mobility. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  (function(){
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-slider-dot');
+    let current = 0;
+
+    function go(i){
+      slides.forEach((s,idx)=>s.classList.toggle('is-active',idx===i));
+      dots.forEach((d,idx)=>d.classList.toggle('is-active',idx===i));
+      current = i;
+    }
+
+    dots.forEach((dot,i)=>dot.addEventListener('click',()=>go(i)));
+
+    setInterval(()=>go((current+1)%slides.length),6000);
+  })();
+</script>
+
+</body>
+</html>
