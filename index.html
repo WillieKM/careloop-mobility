@@ -25,15 +25,21 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: "Inter", system-ui;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
     }
+
     a { text-decoration: none; color: inherit; }
 
-    .container { max-width: 1120px; margin: 0 auto; padding: 1.5rem; }
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
 
     /* HEADER */
     header {
@@ -44,15 +50,46 @@
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(229,231,235,0.9);
     }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-    nav ul { display: flex; gap: 1.35rem; list-style: none; }
-    nav a { font-weight: 500; opacity: 0.8; }
-    nav a:hover { opacity: 1; }
 
-    .brand { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.35rem;
+      list-style: none;
+    }
+
+    nav a {
+      font-weight: 500;
+      opacity: 0.8;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
     .brand-logo {
-      width: 40px; height:40px; border-radius:50%;
-      overflow:hidden; background:#111827;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #111827;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .nav-cta a {
@@ -75,153 +112,204 @@
 
     /* HERO */
     .hero {
-      padding:3rem 0 2.5rem;
-      display:grid;
-      grid-template-columns:1.3fr 1.1fr;
-      gap:2.5rem;
-      align-items:center;
+      padding: 3rem 0 2.5rem;
+      display: grid;
+      grid-template-columns: 1.3fr 1.1fr;
+      gap: 2.5rem;
+      align-items: center;
     }
+
     .hero-title {
-      font-family:"Poppins";
-      font-size:clamp(2.2rem,2.5vw + 1.2rem,3rem);
-      font-weight:700;
-      margin-bottom:1rem;
+      font-family: "Poppins";
+      font-size: clamp(2.2rem, 2.5vw + 1.2rem, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
     }
-    .hero-title span { color:var(--primary); }
-    .hero-subtitle { color:var(--muted); margin-bottom:1.4rem; }
+
+    .hero-title span { color: var(--primary); }
+
+    .hero-subtitle {
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
 
     .badge {
-      display:inline-flex; align-items:center;
-      padding:0.3rem 0.8rem;
-      border-radius:999px;
-      border:1px solid var(--border-subtle);
-      background:white;
-      font-size:0.78rem;
-      margin-right:0.4rem;
-      margin-top:0.25rem;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: white;
+      font-size: 0.78rem;
+      margin-right: 0.4rem;
+      margin-top: 0.25rem;
     }
 
     /* BUTTONS */
     .btn {
-      padding:0.85rem 1.5rem;
-      border-radius:999px;
-      font-weight:600;
-      font-size:0.92rem;
-      display:inline-flex;
-      align-items:center;
-      white-space:nowrap;
-      border:none;
-      cursor:pointer;
+      padding: 0.85rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      border: none;
+      cursor: pointer;
     }
+
     .btn svg {
-      width:16px;
-      height:16px;
-      margin-right:0.35rem;
-      flex-shrink:0;
+      width: 16px;
+      height: 16px;
+      margin-right: 0.35rem;
+      flex-shrink: 0;
     }
+
     .btn-primary {
-      background:var(--primary);
-      color:white;
-      box-shadow:0 18px 38px rgba(239,59,45,0.32);
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 18px 38px rgba(239,59,45,0.32);
     }
+
     .btn-primary:hover {
-      background:var(--primary-dark);
+      background: var(--primary-dark);
     }
+
     .btn-ghost {
-      background:white;
-      border:1px solid var(--border-subtle);
-      color:var(--accent);
+      background: white;
+      border: 1px solid var(--border-subtle);
+      color: var(--accent);
     }
 
     /* HERO SLIDER */
     .hero-slider {
-      position:relative;
-      border-radius:18px;
-      overflow:hidden;
-      width:100%;
-      aspect-ratio:4 / 3;
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: 4 / 3;
     }
+
     .hero-slide {
-      position:absolute; inset:0; opacity:0;
-      transition:opacity .6s ease;
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .6s ease;
     }
-    .hero-slide.is-active { opacity:1; }
+
+    .hero-slide.is-active { opacity: 1; }
+
     .hero-slide img {
-      width:100%; height:100%; object-fit:cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
+
     .hero-slider-dots {
-      position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
-      display:flex; gap:0.4rem;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.4rem;
     }
+
     .hero-slider-dot {
-      width:8px; height:8px;
-      background:rgba(255,255,255,0.5);
-      border-radius:50%;
-      cursor:pointer;
+      width: 8px;
+      height: 8px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      cursor: pointer;
     }
-    .hero-slider-dot.is-active { background:white; }
+
+    .hero-slider-dot.is-active { background: white; }
 
     /* SECTIONS */
-    section { padding:2.4rem 0 1rem; }
-    .section-header { margin-bottom:1.3rem; }
+    section { padding: 2.4rem 0 1rem; }
+
+    .section-header { margin-bottom: 1.3rem; }
+
     .section-eyebrow {
-      text-transform:uppercase;
-      font-size:0.7rem;
-      letter-spacing:0.18em;
-      color:var(--accent);
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      color: var(--accent);
     }
+
     .section-title {
-      font-family:"Poppins";
-      font-size:1.5rem;
-      font-weight:600;
+      font-family: "Poppins";
+      font-size: 1.5rem;
+      font-weight: 600;
     }
-    .section-subtitle { color:var(--muted); max-width:36rem; }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 36rem;
+    }
 
     .cards-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:1.2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
     }
 
-    .card, .contact-box {
-      background:white;
-      border:1px solid var(--border-subtle);
-      border-radius:var(--radius-lg);
-      padding:1.2rem 1.3rem;
-      font-size:0.9rem;
-      box-shadow:0 8px 20px rgba(15,23,42,0.03);
+    .card,
+    .contact-box {
+      background: white;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.3rem;
+      font-size: 0.9rem;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.03);
     }
 
     /* CONTACT GRID */
     .contact-grid {
-      display:grid;
-      grid-template-columns:1.3fr 1.2fr;
-      gap:1.5rem;
+      display: grid;
+      grid-template-columns: 1.3fr 1.2fr;
+      gap: 1.5rem;
     }
 
     /* FAQ */
-    .faq-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; }
+    .faq-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
     .faq-item {
-      background:white;
-      border:1px solid var(--border-subtle);
-      border-radius:var(--radius-lg);
-      padding:1rem 1.1rem;
-      box-shadow:0 8px 20px rgba(15,23,42,0.03);
+      background: white;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.1rem;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.03);
     }
 
     footer {
-      background:white;
-      border-top:1px solid var(--border-subtle);
-      padding:2rem 0;
-      color:var(--muted);
-      font-size:0.82rem;
+      background: white;
+      border-top: 1px solid var(--border-subtle);
+      padding: 2rem 0;
+      color: var(--muted);
+      font-size: 0.82rem;
     }
-    footer a { color:var(--accent); font-weight:500; }
 
-    @media(max-width:900px){
-      .hero { grid-template-columns:1fr; }
-      nav ul { display:none; }
-      .contact-grid { grid-template-columns:1fr; }
+    footer a {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -232,7 +320,7 @@
   <div class="container nav-inner">
     <div class="brand">
       <div class="brand-logo">
-        <img src="logo.png" alt="CareLoop Mobility logo" style="width:100%;height:100%;object-fit:cover;">
+        <img src="logo.png" alt="CareLoop Mobility logo">
       </div>
       <div>
         <strong>CareLoop Mobility</strong><br>
@@ -311,7 +399,7 @@
             <img src="driver-assisting-wheelchair.jpg" alt="Rider being transported in a CareLoop vehicle with driver support">
           </div>
           <div class="hero-slide">
-            <img src="wheelchair-ramp-securement.jpg" alt="Safe wheelchair drop-off at a clinic entrance using a ramp and securement">
+            <img src="wheelchair-ramp-securement.jpg" alt="Wheelchair passenger at drop-off using a secure ramp system">
           </div>
 
           <div class="hero-slider-dots" aria-hidden="true">
@@ -332,7 +420,6 @@
       </div>
 
       <div class="cards-grid">
-
         <article class="card">
           <h3>Appointments & Checkups</h3>
           <p>Transportation for primary care, specialists, checkups, and follow-ups.</p>
@@ -350,9 +437,8 @@
 
         <article class="card">
           <h3>Mobility Options</h3>
-          <p>Ambulatory & wheelchair transportation with safe securement. (No stretcher services.)</p>
+          <p>Ambulatory and wheelchair transportation with safe securement. (No stretcher services.)</p>
         </article>
-
       </div>
     </section>
 
@@ -377,7 +463,7 @@
 
         <article class="card">
           <h3>Simple Coordination</h3>
-          <p>Your staff can call or submit ride requests; we confirm with patients or caregivers.</p>
+          <p>Your staff can call or submit ride requests. We confirm details with patients or caregivers.</p>
         </article>
       </div>
     </section>
@@ -410,10 +496,9 @@
       </div>
 
       <div class="contact-grid">
-
         <div class="contact-box">
           <h3>1. Call to Schedule</h3>
-          <p>Speak with our coordination team to schedule, update a trip, or ask about service availability.</p>
+          <p>Speak with our coordination team to schedule a ride, update a trip, or ask about service availability.</p>
           <a class="btn btn-primary" href="tel:12064721001">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path fill="currentColor" d="M6.6 10.8a15.05 15.05 0 006.6 6.6l2.2-2.2a1 1 0 011-.24 11.36 11.36 0 003.56.57 1 1 0 011 1v3.6a1 1 0 01-1 1A17.96 17.96 0 014 4a1 1 0 011-1h3.6a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.24 1z"/>
@@ -422,8 +507,9 @@
           </a>
 
           <br><br>
+
           <h3>2. Request Online</h3>
-          <p>Prefer submitting details electronically? Use our secure form.</p>
+          <p>Prefer submitting details electronically? Use our secure request form.</p>
           <a class="btn btn-ghost" href="https://forms.gle/MzFVfE5mA1DXkaAG8" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path fill="currentColor" d="M7 4h10a2 2 0 012 2v13H5V6a2 2 0 012-2zm0 2v11h10V6H7zm2 2h6v2H9V8zm0 3h4v2H9v-2z"/>
@@ -432,14 +518,13 @@
           </a>
 
           <p style="font-size:0.8rem;color:var(--muted);margin-top:0.8rem;">
-            We recommend scheduling rides 24–48 hours in advance.
+            We recommend scheduling rides 24–48 hours in advance when possible.
           </p>
         </div>
 
         <div class="contact-box" style="padding:0;overflow:hidden;">
           <img src="driver-assisting-wheelchair.jpg" alt="CareLoop driver assisting a rider in a wheelchair" style="width:100%;height:100%;object-fit:cover;">
         </div>
-
       </div>
     </section>
 
@@ -451,12 +536,35 @@
       </div>
 
       <div class="faq-list">
-        <div class="faq-item"><h3>How far in advance should I schedule?</h3><p>24–48 hours is recommended. Same-day availability varies.</p></div>
-        <div class="faq-item"><h3>Do you support wheelchair riders?</h3><p>Yes. Ambulatory & wheelchair rides are available (no stretchers).</p></div>
-        <div class="faq-item"><h3>Do you work with clinics?</h3><p>Yes — recurring treatments, discharge rides, and coordinated schedules.</p></div>
-        <div class="faq-item"><h3>Can a caregiver ride along?</h3><p>Yes, one caregiver may ride at no additional cost when seating allows.</p></div>
-        <div class="faq-item"><h3>Do you schedule return trips?</h3><p>Yes — based on appointment length or facility discharge time.</p></div>
-        <div class="faq-item"><h3>What is your cancellation policy?</h3><p>Please notify us early — ideally 24 hours ahead.</p></div>
+        <div class="faq-item">
+          <h3>How far in advance should I schedule?</h3>
+          <p>24–48 hours is recommended. Same-day availability varies.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Do you support wheelchair riders?</h3>
+          <p>Yes. Ambulatory and wheelchair rides are available (no stretchers).</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Do you work with clinics?</h3>
+          <p>Yes. We coordinate recurring treatments, discharge rides, and schedules with clinics and care teams.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Can a caregiver ride along?</h3>
+          <p>Yes. One caregiver may ride at no additional cost when seating allows.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Do you schedule return trips?</h3>
+          <p>Yes. We schedule return trips based on appointment length or facility discharge time.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What is your cancellation policy?</h3>
+          <p>Please notify us as early as possible. Ideally contact should be made 24 hours in advance.</p>
+        </div>
       </div>
     </section>
 
@@ -472,9 +580,10 @@
           <h3>Our Mission</h3>
           <p>To remove transportation barriers and provide safe, respectful, on-time service for every rider.</p>
         </article>
+
         <article class="card">
           <h3>How We Work</h3>
-          <p>Trained drivers provide assisted door-to-door service and extra time for mobility needs.</p>
+          <p>Trained drivers provide assisted door-to-door service and extra time for riders with mobility needs.</p>
         </article>
       </div>
     </section>
@@ -489,12 +598,18 @@
       <div class="cards-grid">
         <article class="card">
           <h3>Phone</h3>
-          <p><strong><a href="tel:12064721001">(206) 472-1001</a></strong><br>Call our coordination team for bookings and questions.</p>
+          <p>
+            <strong><a href="tel:12064721001">(206) 472-1001</a></strong><br>
+            Call our coordination team for bookings, questions, or updates.
+          </p>
         </article>
 
         <article class="card">
           <h3>Service Area</h3>
-          <p>Snohomish & King County<br>Call us to confirm coverage for your pickup and drop-off.</p>
+          <p>
+            Snohomish & King County<br>
+            Call us to confirm coverage for your pickup and drop-off locations.
+          </p>
         </article>
       </div>
     </section>
@@ -519,22 +634,6 @@
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  (function(){
+  (function() {
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.hero-slider-dot');
-    let current = 0;
-
-    function go(i){
-      slides.forEach((s,idx)=>s.classList.toggle('is-active',idx===i));
-      dots.forEach((d,idx)=>d.classList.toggle('is-active',idx===i));
-      current = i;
-    }
-
-    dots.forEach((dot,i)=>dot.addEventListener('click',()=>go(i)));
-
-    setInterval(()=>go((current+1)%slides.length), 6000);
-  })();
-</script>
-
-</body>
-</html>
