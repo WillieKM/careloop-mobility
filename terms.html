@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Terms of Service – CareLoop Mobility</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Terms of Service for CareLoop Mobility, providing non-emergency medical transportation in Snohomish and King County." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #ef3b2d;
+      --accent: #0b4f7f;
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --border-subtle: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --radius-lg: 18px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:"Inter",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    header, footer {
+      background:white;
+      border-bottom:1px solid var(--border-subtle);
+    }
+    .header-inner, .container {
+      max-width:1120px;
+      margin:0 auto;
+      padding:1.4rem;
+    }
+    .brand {
+      display:flex; align-items:center; gap:0.7rem;
+    }
+    .brand-logo {
+      width:36px; height:36px;
+      border-radius:50%;
+      overflow:hidden;
+      background:black;
+    }
+    main { padding:2.5rem 0; }
+    h1 { font-family:"Poppins"; font-size:2rem; margin-bottom:0.75rem; }
+    h2 { font-family:"Poppins"; font-size:1.2rem; margin:1.4rem 0 0.4rem; }
+    .card {
+      background:white;
+      border:1px solid var(--border-subtle);
+      border-radius:var(--radius-lg);
+      padding:1.6rem;
+      font-size:0.95rem;
+    }
+    ul { margin-left:1.2rem; margin-bottom:0.7rem; }
+    footer {
+      border-top:1px solid var(--border-subtle);
+      padding:1.4rem;
+      margin-top:2rem;
+      font-size:0.8rem;
+      color:var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-logo"><img src="logo.png" alt="Logo" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div>
+        <strong>CareLoop Mobility</strong><br>
+        <span style="font-size:0.8rem; color:var(--muted);">NEMT • Snohomish & King County</span>
+      </div>
+    </div>
+    <a href="index.html" style="color:var(--accent);">← Back to Home</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <h1>Terms of Service</h1>
+    <p style="color:var(--muted); font-size:0.85rem;">Last updated: March 2025</p>
+
+    <div class="card">
+      <p>
+        These Terms of Service (“Terms”) govern your use of CareLoop Mobility’s non-emergency medical transportation services. 
+        By booking a ride, contacting us, or using our website, you agree to these Terms.
+      </p>
+
+      <h2>1. Services Provided</h2>
+      <p>
+        CareLoop Mobility provides non-emergency medical transportation (“NEMT”) for ambulatory and wheelchair clients. 
+        We do not provide emergency, stretcher, or medical treatment services. 
+      </p>
+
+      <h2>2. Scheduling and Availability</h2>
+      <p>Scheduling is based on availability. We may adjust pickup times due to routing efficiency, weather, or delays.</p>
+
+      <h2>3. Rider Responsibilities</h2>
+      <ul>
+        <li>Be ready at the scheduled pickup time.</li>
+        <li>Use seatbelts and mobility securement devices as required.</li>
+        <li>Behave safely inside the vehicle.</li>
+        <li>Inform us of mobility needs at time of scheduling.</li>
+      </ul>
+
+      <h2>4. Caregiver and Companion Riders</h2>
+      <p>One caregiver may ride at no additional cost when seating is available.</p>
+
+      <h2>5. Fees and Payments</h2>
+      <p>Pricing is provided at time of scheduling. Additional wait time or stops may result in additional charges.</p>
+
+      <h2>6. Cancellations</h2>
+      <p>Please provide at least 24 hours notice when possible. See our Refund & Cancellation Policy for full details.</p>
+
+      <h2>7. Limitation of Liability</h2>
+      <p>
+        CareLoop Mobility is not responsible for delays caused by traffic, weather, road conditions, or factors outside our control. 
+        We do not guarantee arrival times for medical appointments.
+      </p>
+
+      <h2>8. Website Use</h2>
+      <p>
+        Any online forms or tools are provided for convenience. Information entered must be accurate.
+      </p>
+
+      <h2>9. Changes to These Terms</h2>
+      <p>We may update these Terms from time to time. Updated Terms will be posted on this page.</p>
+
+      <h2>10. Contact Us</h2>
+      <p>
+        CareLoop Mobility<br>
+        Phone: <a href="tel:5136074349">513-607-4349</a>
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    © <span id="year"></span> CareLoop Mobility. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
