@@ -62,6 +62,15 @@
       color: white;
       font-weight: 600;
       box-shadow: 0 10px 25px rgba(239,59,45,0.4);
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .nav-cta svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 0.35rem;
     }
 
     /* HERO */
@@ -80,6 +89,7 @@
     }
     .hero-title span { color:var(--primary); }
     .hero-subtitle { color:var(--muted); margin-bottom:1.4rem; }
+
     .badge {
       display:inline-flex; align-items:center;
       padding:0.3rem 0.8rem;
@@ -88,6 +98,7 @@
       background:white;
       font-size:0.78rem;
       margin-right:0.4rem;
+      margin-top:0.25rem;
     }
 
     /* BUTTONS */
@@ -99,11 +110,22 @@
       display:inline-flex;
       align-items:center;
       white-space:nowrap;
+      border:none;
+      cursor:pointer;
+    }
+    .btn svg {
+      width:16px;
+      height:16px;
+      margin-right:0.35rem;
+      flex-shrink:0;
     }
     .btn-primary {
       background:var(--primary);
       color:white;
       box-shadow:0 18px 38px rgba(239,59,45,0.32);
+    }
+    .btn-primary:hover {
+      background:var(--primary-dark);
     }
     .btn-ghost {
       background:white;
@@ -124,6 +146,9 @@
       transition:opacity .6s ease;
     }
     .hero-slide.is-active { opacity:1; }
+    .hero-slide img {
+      width:100%; height:100%; object-fit:cover;
+    }
     .hero-slider-dots {
       position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
       display:flex; gap:0.4rem;
@@ -206,14 +231,16 @@
 <header>
   <div class="container nav-inner">
     <div class="brand">
-      <div class="brand-logo"><img src="logo.png" alt="CareLoop Logo" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="brand-logo">
+        <img src="logo.png" alt="CareLoop Mobility logo" style="width:100%;height:100%;object-fit:cover;">
+      </div>
       <div>
         <strong>CareLoop Mobility</strong><br>
         <span style="font-size:0.8rem;color:var(--muted);">NEMT • Snohomish & King County</span>
       </div>
     </div>
 
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul>
         <li><a href="#services">Services</a></li>
         <li><a href="#clinics">Clinics</a></li>
@@ -224,7 +251,12 @@
     </nav>
 
     <div class="nav-cta">
-      <a href="tel:5136074349">Call Now</a>
+      <a href="tel:12064721001">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M6.6 10.8a15.05 15.05 0 006.6 6.6l2.2-2.2a1 1 0 011-.24 11.36 11.36 0 003.56.57 1 1 0 011 1v3.6a1 1 0 01-1 1A17.96 17.96 0 014 4a1 1 0 011-1h3.6a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.24 1z"/>
+        </svg>
+        Call Now
+      </a>
     </div>
   </div>
 </header>
@@ -234,12 +266,11 @@
   <div class="container">
 
     <!-- HERO -->
-    <section class="hero">
-
+    <section class="hero" aria-labelledby="hero-heading">
       <div>
         <div class="section-eyebrow">Non-Emergency Medical Transportation</div>
 
-        <h1 class="hero-title">
+        <h1 id="hero-heading" class="hero-title">
           Safe, Reliable Medical Transportation Across
           <span>Snohomish & King County</span>
         </h1>
@@ -248,31 +279,42 @@
           Professional, dependable ambulatory and wheelchair transportation for medical appointments, treatments, and therapy visits.
         </p>
 
-        <div>
+        <div aria-label="Service highlights">
           <span class="badge">On-time, door-to-door service</span>
           <span class="badge">Ambulatory & wheelchair support</span>
           <span class="badge">Professional drivers</span>
         </div>
 
         <div style="margin-top:1rem; display:flex; gap:0.8rem; flex-wrap:wrap;">
-          <a class="btn btn-primary" href="tel:5136074349">📞 Call Now</a>
-          <a class="btn btn-ghost" href="#book">📋 Request a Ride</a>
+          <a class="btn btn-primary" href="tel:12064721001">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M6.6 10.8a15.05 15.05 0 006.6 6.6l2.2-2.2a1 1 0 011-.24 11.36 11.36 0 003.56.57 1 1 0 011 1v3.6a1 1 0 01-1 1A17.96 17.96 0 014 4a1 1 0 011-1h3.6a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.24 1z"/>
+            </svg>
+            Call (206) 472-1001
+          </a>
+
+          <a class="btn btn-ghost" href="#book">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M7 4h10a2 2 0 012 2v13H5V6a2 2 0 012-2zm0 2v11h10V6H7zm2 2h6v2H9V8zm0 3h4v2H9v-2z"/>
+            </svg>
+            Request a Ride
+          </a>
         </div>
       </div>
 
       <div>
-        <div class="hero-slider">
+        <div class="hero-slider" aria-label="CareLoop Mobility in action">
           <div class="hero-slide is-active">
-            <img src="careloop-vehicle-exterior.jpg" alt="CareLoop Vehicle">
+            <img src="careloop-vehicle-exterior.jpg" alt="CareLoop driver loading a rider into a vehicle with a ramp">
           </div>
           <div class="hero-slide">
-            <img src="driver-assisting-wheelchair.jpg" alt="Driver Assisting Wheelchair">
+            <img src="driver-assisting-wheelchair.jpg" alt="Rider being transported in a CareLoop vehicle with driver support">
           </div>
           <div class="hero-slide">
-            <img src="wheelchair-ramp-securement.jpg" alt="Ramp Securement">
+            <img src="wheelchair-ramp-securement.jpg" alt="Safe wheelchair drop-off at a clinic entrance using a ramp and securement">
           </div>
 
-          <div class="hero-slider-dots">
+          <div class="hero-slider-dots" aria-hidden="true">
             <div class="hero-slider-dot is-active"></div>
             <div class="hero-slider-dot"></div>
             <div class="hero-slider-dot"></div>
@@ -314,7 +356,6 @@
       </div>
     </section>
 
-
     <!-- CLINICS -->
     <section id="clinics">
       <div class="section-header">
@@ -341,7 +382,6 @@
       </div>
     </section>
 
-
     <!-- SERVICE AREA -->
     <section id="service-area">
       <div class="section-header">
@@ -351,11 +391,16 @@
       </div>
 
       <div class="cards-grid">
-        <article class="card"><h3>Snohomish County</h3><p>Transportation to major clinics, hospitals, and medical facilities across Snohomish County.</p></article>
-        <article class="card"><h3>King County</h3><p>Reliable transportation for appointments, treatments, and facility visits.</p></article>
+        <article class="card">
+          <h3>Snohomish County</h3>
+          <p>Transportation to major clinics, hospitals, and medical facilities across Snohomish County.</p>
+        </article>
+        <article class="card">
+          <h3>King County</h3>
+          <p>Reliable transportation for appointments, treatments, and facility visits throughout King County.</p>
+        </article>
       </div>
     </section>
-
 
     <!-- BOOK -->
     <section id="book">
@@ -368,13 +413,23 @@
 
         <div class="contact-box">
           <h3>1. Call to Schedule</h3>
-          <p>Speak with our coordination team to schedule, update, or ask about service availability.</p>
-          <a class="btn btn-primary" href="tel:5136074349">📞 Call Now</a>
+          <p>Speak with our coordination team to schedule, update a trip, or ask about service availability.</p>
+          <a class="btn btn-primary" href="tel:12064721001">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M6.6 10.8a15.05 15.05 0 006.6 6.6l2.2-2.2a1 1 0 011-.24 11.36 11.36 0 003.56.57 1 1 0 011 1v3.6a1 1 0 01-1 1A17.96 17.96 0 014 4a1 1 0 011-1h3.6a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.24 1z"/>
+            </svg>
+            Call (206) 472-1001
+          </a>
 
           <br><br>
           <h3>2. Request Online</h3>
           <p>Prefer submitting details electronically? Use our secure form.</p>
-          <a class="btn btn-ghost" href="https://forms.gle/MzFVfE5mA1DXkaAG8" target="_blank">📋 Submit Ride Request</a>
+          <a class="btn btn-ghost" href="https://forms.gle/MzFVfE5mA1DXkaAG8" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M7 4h10a2 2 0 012 2v13H5V6a2 2 0 012-2zm0 2v11h10V6H7zm2 2h6v2H9V8zm0 3h4v2H9v-2z"/>
+            </svg>
+            Submit Ride Request
+          </a>
 
           <p style="font-size:0.8rem;color:var(--muted);margin-top:0.8rem;">
             We recommend scheduling rides 24–48 hours in advance.
@@ -382,12 +437,11 @@
         </div>
 
         <div class="contact-box" style="padding:0;overflow:hidden;">
-          <img src="driver-assisting-wheelchair.jpg" alt="Assisting Passenger" style="width:100%;height:100%;object-fit:cover;">
+          <img src="driver-assisting-wheelchair.jpg" alt="CareLoop driver assisting a rider in a wheelchair" style="width:100%;height:100%;object-fit:cover;">
         </div>
 
       </div>
     </section>
-
 
     <!-- FAQ -->
     <section id="faq">
@@ -397,16 +451,15 @@
       </div>
 
       <div class="faq-list">
-        <div class="faq-item"><h3>How far in advance should I schedule?</h3><p>24–48 hours recommended. Same-day availability varies.</p></div>
+        <div class="faq-item"><h3>How far in advance should I schedule?</h3><p>24–48 hours is recommended. Same-day availability varies.</p></div>
         <div class="faq-item"><h3>Do you support wheelchair riders?</h3><p>Yes. Ambulatory & wheelchair rides are available (no stretchers).</p></div>
         <div class="faq-item"><h3>Do you work with clinics?</h3><p>Yes — recurring treatments, discharge rides, and coordinated schedules.</p></div>
-        <div class="faq-item"><h3>Can a caregiver ride along?</h3><p>Yes, one caregiver may ride at no cost when seating allows.</p></div>
+        <div class="faq-item"><h3>Can a caregiver ride along?</h3><p>Yes, one caregiver may ride at no additional cost when seating allows.</p></div>
         <div class="faq-item"><h3>Do you schedule return trips?</h3><p>Yes — based on appointment length or facility discharge time.</p></div>
         <div class="faq-item"><h3>What is your cancellation policy?</h3><p>Please notify us early — ideally 24 hours ahead.</p></div>
       </div>
     </section>
 
-    
     <!-- ABOUT -->
     <section id="about">
       <div class="section-header">
@@ -415,11 +468,16 @@
       </div>
 
       <div class="cards-grid">
-        <article class="card"><h3>Our Mission</h3><p>To remove transportation barriers and provide safe, respectful, on-time service.</p></article>
-        <article class="card"><h3>How We Work</h3><p>Trained drivers provide assisted door-to-door service for mobility needs.</p></article>
+        <article class="card">
+          <h3>Our Mission</h3>
+          <p>To remove transportation barriers and provide safe, respectful, on-time service for every rider.</p>
+        </article>
+        <article class="card">
+          <h3>How We Work</h3>
+          <p>Trained drivers provide assisted door-to-door service and extra time for mobility needs.</p>
+        </article>
       </div>
     </section>
-
 
     <!-- CONTACT -->
     <section id="contact">
@@ -429,8 +487,15 @@
       </div>
 
       <div class="cards-grid">
-        <article class="card"><h3>Phone</h3><p><strong><a href="tel:5136074349">📞 Call Now</a></strong></p></article>
-        <article class="card"><h3>Service Area</h3><p>Snohomish & King County<br>Call us to confirm coverage.</p></article>
+        <article class="card">
+          <h3>Phone</h3>
+          <p><strong><a href="tel:12064721001">(206) 472-1001</a></strong><br>Call our coordination team for bookings and questions.</p>
+        </article>
+
+        <article class="card">
+          <h3>Service Area</h3>
+          <p>Snohomish & King County<br>Call us to confirm coverage for your pickup and drop-off.</p>
+        </article>
       </div>
     </section>
 
