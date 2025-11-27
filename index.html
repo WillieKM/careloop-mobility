@@ -9,7 +9,7 @@
     content="CareLoop Mobility provides safe, reliable ambulatory and wheelchair non-emergency medical transportation in Snohomish and King County. Call or request a ride online."
   />
 
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS CDN (utility classes) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -28,8 +28,16 @@
       background: #ffffff;
     }
 
+    /* Base button styling (works even without Tailwind @apply) */
     .btn-base {
-      @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.75rem;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      white-space: nowrap;
     }
 
     .shadow-soft {
@@ -54,7 +62,7 @@
         <img
           src="logo.png"
           alt="CareLoop Mobility logo"
-          class="h-12 w-auto"
+          class="h-14 w-auto"
         />
       </div>
 
@@ -68,18 +76,10 @@
 
       <!-- Right side -->
       <div class="flex items-center gap-3">
-        <select
-          class="hidden md:block text-xs border rounded-md px-2 py-1"
-          style="border-color: var(--subtle); color: var(--brand-dark);"
-        >
-          <option>Brand Colors</option>
-          <option>Healthcare Calm</option>
-          <option>Modern Trust</option>
-        </select>
         <a href="tel:12064721001">
           <button
-            class="btn-base text-white"
-            style="background: var(--accent);"
+            class="btn-base text-white text-sm"
+            style="background: var(--accent); padding: 0.45rem 1.3rem;"
           >
             Call Now
           </button>
@@ -202,7 +202,7 @@
               </p>
               <form
                 class="mt-4 grid grid-cols-1 gap-3"
-                onsubmit="return false;"
+                onsubmit="window.open('https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform?edit_requested=true', '_blank'); return false;"
               >
                 <input
                   class="border rounded-lg px-3 py-2 text-sm"
@@ -744,7 +744,7 @@
           <a href="tel:12064721001">
             <button
               class="btn-base px-6 py-3 text-base text-white"
-              style="background: var(--accent);"
+              style="background: var(--accent); min-width: 190px;"
             >
               <!-- Phone icon -->
               <svg
@@ -764,10 +764,10 @@
               206-472-1001
             </button>
           </a>
-          <a href="https://forms.gle/MzFVfE5mA1DXkaAG8" target="_blank" rel="noopener">
+          <a href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform?edit_requested=true" target="_blank" rel="noopener">
             <button
               class="btn-base px-6 py-3 text-base text-white"
-              style="background: var(--brand);"
+              style="background: var(--brand); min-width: 190px;"
             >
               Open Ride Request Form
             </button>
