@@ -188,6 +188,7 @@
       overflow: hidden;
       width: 100%;
       aspect-ratio: 4 / 3;
+      box-shadow: 0 18px 40px rgba(15,23,42,0.25);
     }
 
     .hero-slide {
@@ -263,6 +264,15 @@
       box-shadow: 0 8px 20px rgba(15,23,42,0.03);
     }
 
+    /* Image inside cards (for sections using your photos) */
+    .card-image {
+      width: 100%;
+      height: 170px;
+      border-radius: 14px;
+      object-fit: cover;
+      margin-bottom: 0.75rem;
+    }
+
     /* CONTACT GRID */
     .contact-grid {
       display: grid;
@@ -320,6 +330,7 @@
   <div class="container nav-inner">
     <div class="brand">
       <div class="brand-logo">
+        <!-- Update this file name if your logo file is different -->
         <img src="logo.png" alt="CareLoop Mobility logo">
       </div>
       <div>
@@ -411,6 +422,49 @@
       </div>
     </section>
 
+    <!-- SEE CARELOOP IN ACTION (uses your local images) -->
+    <section id="in-action">
+      <div class="section-header">
+        <div class="section-eyebrow">Real Rides</div>
+        <h2 class="section-title">See CareLoop in Action</h2>
+        <p class="section-subtitle">
+          Moments from non-emergency medical rides: helping riders into the vehicle, supporting them on the way, and arriving safely at clinics and community locations.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <img
+            src="careloop-vehicle-exterior.jpg"
+            alt="CareLoop driver loading a rider into the transport vehicle"
+            class="card-image"
+          />
+          <h3>Gentle, Supported Pickup</h3>
+          <p>Drivers assist riders and caregivers from the front door into the vehicle with extra time and care.</p>
+        </article>
+
+        <article class="card">
+          <img
+            src="driver-assisting-wheelchair.jpg"
+            alt="Driver assisting a wheelchair rider inside a CareLoop vehicle"
+            class="card-image"
+          />
+          <h3>Comfortable Ride Between Visits</h3>
+          <p>Clean, secure vehicles for riders using wheelchairs, walkers, or ambulatory support.</p>
+        </article>
+
+        <article class="card">
+          <img
+            src="wheelchair-ramp-securement.jpg"
+            alt="Wheelchair rider using a secure ramp system at drop-off"
+            class="card-image"
+          />
+          <h3>Safe Drop-off at Clinics</h3>
+          <p>Door-to-door service to hospitals, clinics, dialysis centers, and therapy appointments.</p>
+        </article>
+      </div>
+    </section>
+
     <!-- SERVICES -->
     <section id="services">
       <div class="section-header">
@@ -421,17 +475,17 @@
 
       <div class="cards-grid">
         <article class="card">
-          <h3>Appointments & Checkups</h3>
+          <h3>Appointments &amp; Checkups</h3>
           <p>Transportation for primary care, specialists, checkups, and follow-ups.</p>
         </article>
 
         <article class="card">
-          <h3>Dialysis & Oncology</h3>
+          <h3>Dialysis &amp; Oncology</h3>
           <p>Consistent, on-time rides for dialysis, chemotherapy, infusion therapy, and recurring treatment schedules.</p>
         </article>
 
         <article class="card">
-          <h3>Therapy & Rehab</h3>
+          <h3>Therapy &amp; Rehab</h3>
           <p>Transportation for physical therapy, occupational therapy, rehab centers, and outpatient procedures.</p>
         </article>
 
@@ -443,197 +497,4 @@
     </section>
 
     <!-- CLINICS -->
-    <section id="clinics">
-      <div class="section-header">
-        <div class="section-eyebrow">For Clinics & Care Teams</div>
-        <h2 class="section-title">Transportation Support for Patients</h2>
-        <p class="section-subtitle">We partner with clinics, hospitals, and care teams for reliable patient transportation.</p>
-      </div>
-
-      <div class="cards-grid">
-        <article class="card">
-          <h3>Recurring Treatment Schedules</h3>
-          <p>Coordinated transportation for dialysis, oncology, infusion, and rehab patients.</p>
-        </article>
-
-        <article class="card">
-          <h3>Door-to-Door Assistance</h3>
-          <p>Safe support from entrance to vehicle and back, including mobility aid assistance.</p>
-        </article>
-
-        <article class="card">
-          <h3>Simple Coordination</h3>
-          <p>Your staff can call or submit ride requests. We confirm details with patients or caregivers.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- SERVICE AREA -->
-    <section id="service-area">
-      <div class="section-header">
-        <div class="section-eyebrow">Service Area</div>
-        <h2 class="section-title">Serving Snohomish & King County</h2>
-        <p class="section-subtitle">Call anytime to confirm coverage for your location.</p>
-      </div>
-
-      <div class="cards-grid">
-        <article class="card">
-          <h3>Snohomish County</h3>
-          <p>Transportation to major clinics, hospitals, and medical facilities across Snohomish County.</p>
-        </article>
-        <article class="card">
-          <h3>King County</h3>
-          <p>Reliable transportation for appointments, treatments, and facility visits throughout King County.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- BOOK -->
-    <section id="book">
-      <div class="section-header">
-        <div class="section-eyebrow">Book a Ride</div>
-        <h2 class="section-title">Schedule Your Ride</h2>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-box">
-          <h3>1. Call to Schedule</h3>
-          <p>Speak with our coordination team to schedule a ride, update a trip, or ask about service availability.</p>
-          <a class="btn btn-primary" href="tel:12064721001">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M6.6 10.8a15.05 15.05 0 006.6 6.6l2.2-2.2a1 1 0 011-.24 11.36 11.36 0 003.56.57 1 1 0 011 1v3.6a1 1 0 01-1 1A17.96 17.96 0 014 4a1 1 0 011-1h3.6a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.24 1z"/>
-            </svg>
-            Call (206) 472-1001
-          </a>
-
-          <br><br>
-
-          <h3>2. Request Online</h3>
-          <p>Prefer submitting details electronically? Use our secure request form.</p>
-          <a class="btn btn-ghost" href="https://forms.gle/MzFVfE5mA1DXkaAG8" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M7 4h10a2 2 0 012 2v13H5V6a2 2 0 012-2zm0 2v11h10V6H7zm2 2h6v2H9V8zm0 3h4v2H9v-2z"/>
-            </svg>
-            Submit Ride Request
-          </a>
-
-          <p style="font-size:0.8rem;color:var(--muted);margin-top:0.8rem;">
-            We recommend scheduling rides 24–48 hours in advance when possible.
-          </p>
-        </div>
-
-        <div class="contact-box" style="padding:0;overflow:hidden;">
-          <img src="driver-assisting-wheelchair.jpg" alt="CareLoop driver assisting a rider in a wheelchair" style="width:100%;height:100%;object-fit:cover;">
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq">
-      <div class="section-header">
-        <div class="section-eyebrow">FAQ</div>
-        <h2 class="section-title">Frequently Asked Questions</h2>
-      </div>
-
-      <div class="faq-list">
-        <div class="faq-item">
-          <h3>How far in advance should I schedule?</h3>
-          <p>24–48 hours is recommended. Same-day availability varies.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Do you support wheelchair riders?</h3>
-          <p>Yes. Ambulatory and wheelchair rides are available (no stretchers).</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Do you work with clinics?</h3>
-          <p>Yes. We coordinate recurring treatments, discharge rides, and schedules with clinics and care teams.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Can a caregiver ride along?</h3>
-          <p>Yes. One caregiver may ride at no additional cost when seating allows.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Do you schedule return trips?</h3>
-          <p>Yes. We schedule return trips based on appointment length or facility discharge time.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>What is your cancellation policy?</h3>
-          <p>Please notify us as early as possible. Ideally contact should be made 24 hours in advance.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="section-header">
-        <div class="section-eyebrow">About Us</div>
-        <h2 class="section-title">Compassionate Transportation, Every Trip</h2>
-      </div>
-
-      <div class="cards-grid">
-        <article class="card">
-          <h3>Our Mission</h3>
-          <p>To remove transportation barriers and provide safe, respectful, on-time service for every rider.</p>
-        </article>
-
-        <article class="card">
-          <h3>How We Work</h3>
-          <p>Trained drivers provide assisted door-to-door service and extra time for riders with mobility needs.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="section-header">
-        <div class="section-eyebrow">Contact</div>
-        <h2 class="section-title">Get in Touch</h2>
-      </div>
-
-      <div class="cards-grid">
-        <article class="card">
-          <h3>Phone</h3>
-          <p>
-            <strong><a href="tel:12064721001">(206) 472-1001</a></strong><br>
-            Call our coordination team for bookings, questions, or updates.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3>Service Area</h3>
-          <p>
-            Snohomish & King County<br>
-            Call us to confirm coverage for your pickup and drop-off locations.
-          </p>
-        </article>
-      </div>
-    </section>
-
-  </div>
-</main>
-
-
-<footer>
-  <div class="container" style="text-align:center;">
-    <p>© <span id="year"></span> CareLoop Mobility. All rights reserved.</p>
-    <p style="margin-top:0.5rem;">
-      <a href="privacy.html">Privacy Policy</a> •
-      <a href="terms.html">Terms of Service</a> •
-      <a href="refund.html">Refund Policy</a> •
-      <a href="notice.html">Notice of Data Practices</a>
-    </p>
-  </div>
-</footer>
-
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  (function() {
-    const slides = document.querySelectorAll('.hero-slide');
-    const dots = document.querySelectorAll('.hero-slider-dot');
+    <section id=
