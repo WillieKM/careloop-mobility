@@ -9,14 +9,14 @@
     content="CareLoop Mobility provides safe, reliable ambulatory and wheelchair non-emergency medical transportation in Snohomish and King County. Call or request a ride online."
   />
 
-  <!-- Tailwind CSS CDN (utility classes) -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     :root {
-      --brand: #00857a;       /* Teal wordmark */
-      --brand-dark: #003a5d;  /* Navy */
-      --accent: #e53935;      /* Red 'Call now' */
+      --brand: #00857a;
+      --brand-dark: #003a5d;
+      --accent: #e53935;
       --text: #102a43;
       --subtle: #f5f7fa;
     }
@@ -28,16 +28,8 @@
       background: #ffffff;
     }
 
-    /* Base button styling */
     .btn-base {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 0.75rem;
-      padding: 0.5rem 1.25rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      white-space: nowrap;
+      @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 font-semibold;
     }
 
     .shadow-soft {
@@ -49,14 +41,16 @@
     }
   </style>
 </head>
+
 <body class="min-h-screen bg-white">
 
-  <!-- Header -->
+  <!-- HEADER -->
   <header
     class="sticky top-0 z-40 border-b"
     style="border-color: var(--subtle); background: rgba(255,255,255,0.96); backdrop-filter: blur(12px);"
   >
-    <div class="max-w-6xl mx-auto flex items-center justify-between gap-3 px-4 py-3">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+
       <!-- Brand -->
       <div class="flex items-center gap-3 py-2 md:py-3">
         <img
@@ -66,21 +60,20 @@
         />
       </div>
 
-      <!-- Nav -->
-    <nav class="hidden md:flex items-center gap-8 text-base font-medium">
-  <a href="#services" class="hover:underline">Services</a>
-  <a href="#area" class="hover:underline">Service Area</a>
-  <a href="#faq" class="hover:underline">FAQ</a>
-  <a href="#contact" class="hover:underline">Contact</a>
-</nav>
-
+      <!-- Navigation -->
+      <nav class="hidden md:flex items-center gap-8 text-base font-medium" style="color: var(--brand-dark);">
+        <a href="#services" class="hover:underline">Services</a>
+        <a href="#area" class="hover:underline">Service Area</a>
+        <a href="#faq" class="hover:underline">FAQ</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </nav>
 
       <!-- Right side -->
       <div class="flex items-center gap-3">
         <a href="tel:12064721001">
           <button
-            class="btn-base text-white text-sm"
-            style="background: var(--accent); padding: 0.45rem 1.3rem;"
+            class="btn-base text-white"
+            style="background: var(--accent);"
           >
             Call Now
           </button>
@@ -89,546 +82,149 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- HERO -->
   <main>
     <section class="relative overflow-hidden">
       <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-4 py-12 md:py-16">
-        <!-- Left hero content -->
+
+        <!-- Left Hero Content -->
         <div>
-          <h1
-            class="text-3xl md:text-5xl font-bold leading-tight"
-            style="color: var(--brand-dark);"
-          >
-            Safe, reliable rides to
-            <br class="hidden md:block" />
-            your medical appointments
+          <h1 class="text-3xl md:text-5xl font-bold leading-tight" style="color: var(--brand-dark);">
+            Safe, reliable rides to<br />your medical appointments
           </h1>
-          <p
-            class="mt-4 text-base md:text-lg"
-            style="color: #334e68;"
-          >
+
+          <p class="mt-4 text-base md:text-lg" style="color: #334e68;">
             Door-to-door ambulatory and wheelchair transportation across
-            Snohomish &amp; King County.
+            Snohomish & King County.
           </p>
 
           <div class="mt-6 flex flex-wrap gap-3">
+
             <a href="#book">
-              <button
-                class="btn-base text-white px-5 py-2.5"
-                style="background: var(--brand);"
-              >
+              <button class="btn-base text-white text-base px-6 py-3" style="background: var(--brand);">
                 Request a Ride
               </button>
             </a>
+
             <a href="tel:12064721001">
               <button
-                class="btn-base border bg-white px-5 py-2.5"
+                class="btn-base bg-white border text-base px-6 py-3"
                 style="border-color: var(--brand); color: var(--brand);"
               >
-                <!-- Phone icon -->
                 <svg
                   class="h-4 w-4 mr-2"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
                 >
-                  <path
-                    d="M22 16.92v2a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.1 4.18 2 2 0 0 1 5.11 2h2a2 2 0 0 1 2 1.72c.12.89.31 1.76.58 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.15a2 2 0 0 1 2.11-.45c.84.27 1.71.46 2.6.58A2 2 0 0 1 22 16.92z"
-                  />
+                  <path d="M22 16.92v2a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.1 4.18 2 2 0 0 1 5.11 2h2" />
                 </svg>
                 206-472-1001
               </button>
             </a>
+
           </div>
 
+          <!-- Checkmarks -->
           <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
-            <div
-              class="flex items-center gap-2 px-3 py-2 rounded-lg"
-              style="background: var(--subtle);"
-            >
-              <span
-                class="inline-flex h-5 w-5 items-center justify-center rounded-full"
-                style="background: #e3fcec; color: var(--brand);"
-              >
-                ✓
-              </span>
-              <span>On-time &amp; insured</span>
+            <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="background: var(--subtle);">
+              <span class="inline-flex h-5 w-5 items-center justify-center rounded-full" style="background: #e3fcec; color: var(--brand);">✓</span>
+              <span>On-time & insured</span>
             </div>
-            <div
-              class="flex items-center gap-2 px-3 py-2 rounded-lg"
-              style="background: var(--subtle);"
-            >
-              <span
-                class="inline-flex h-5 w-5 items-center justify-center rounded-full"
-                style="background: #e3fcec; color: var(--brand);"
-              >
-                ✓
-              </span>
+
+            <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="background: var(--subtle);">
+              <span class="inline-flex h-5 w-5 items-center justify-center rounded-full" style="background: #e3fcec; color: var(--brand);">✓</span>
               <span>Caregiver rides free</span>
             </div>
-            <div
-              class="flex items-center gap-2 px-3 py-2 rounded-lg"
-              style="background: var(--subtle);"
-            >
-              <span
-                class="inline-flex h-5 w-5 items-center justify-center rounded-full"
-                style="background: #e3fcec; color: var(--brand);"
-              >
-                ✓
-              </span>
-              <span>Wheelchair &amp; ambulatory</span>
+
+            <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="background: var(--subtle);">
+              <span class="inline-flex h-5 w-5 items-center justify-center rounded-full" style="background: #e3fcec; color: var(--brand);">✓</span>
+              <span>Wheelchair & ambulatory</span>
             </div>
           </div>
         </div>
 
-        <!-- Right hero request card -->
+        <!-- Ride Request Card -->
         <div class="relative">
-          <div
-            class="relative rounded-2xl bg-white/95 shadow-soft border"
-            style="border-color: #e1e7ef;"
-          >
+          <div class="relative rounded-2xl bg-white/95 shadow-soft border" style="border-color: #e1e7ef;">
             <div class="p-6">
-              <h3
-                class="text-xl font-semibold"
-                style="color: var(--brand-dark);"
-              >
+              <h3 class="text-xl font-semibold" style="color: var(--brand-dark);">
                 Quick Ride Request
               </h3>
-              <p class="text-xs mt-1" style="color: #627d98;">
-                We’ll call to confirm your trip details.
-              </p>
-              <form
-                class="mt-4 grid grid-cols-1 gap-3"
-                onsubmit="window.open('https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform?edit_requested=true', '_blank'); return false;"
+              <p class="text-xs mt-1" style="color: #627d98;">We’ll call to confirm your trip details.</p>
+
+              <a
+                href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform?edit_requested=true"
+                target="_blank"
               >
-                <input
-                  class="border rounded-lg px-3 py-2 text-sm"
-                  style="border-color: #d9e2ec;"
-                  placeholder="Your Name"
-                  name="name"
-                />
-                <input
-                  class="border rounded-lg px-3 py-2 text-sm"
-                  style="border-color: #d9e2ec;"
-                  placeholder="Phone Number"
-                  name="phone"
-                />
-                <input
-                  class="border rounded-lg px-3 py-2 text-sm"
-                  style="border-color: #d9e2ec;"
-                  placeholder="Pickup Address"
-                  name="pickup"
-                />
-                <input
-                  class="border rounded-lg px-3 py-2 text-sm"
-                  style="border-color: #d9e2ec;"
-                  placeholder="Destination"
-                  name="destination"
-                />
-                <button
-                  class="btn-base mt-2 w-full text-white"
-                  style="background: var(--brand);"
-                  type="submit"
-                >
-                  Submit Request
+                <button class="btn-base text-white w-full mt-4 py-3 text-base" style="background: var(--brand);">
+                  Open Ride Request Form
                 </button>
-              </form>
+              </a>
+
               <div class="mt-4 text-xs" style="color: #627d98;">
                 Or call
-                <a class="underline ml-1" href="tel:12064721001">
-                  206-472-1001
-                </a>
+                <a class="underline ml-1" href="tel:12064721001">206-472-1001</a>
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
-   <nav class="hidden md:flex items-center gap-8 text-base font-medium">
-  <a href="#services" class="hover:underline">Services</a>
-  <a href="#area" class="hover:underline">Service Area</a>
-  <a href="#faq" class="hover:underline">FAQ</a>
-  <a href="#contact" class="hover:underline">Contact</a>
-</nav>
-
-
-    <!-- At a Glance -->
-    <section
-      class="py-10"
-      style="background: var(--subtle);"
-    >
+    <!-- SEE CARELOOP IN ACTION -->
+    <section class="py-10">
       <div class="max-w-6xl mx-auto px-4">
-        <h2
-          class="text-2xl md:text-3xl font-bold"
-          style="color: var(--brand-dark);"
-        >
-          At-a-Glance
-        </h2>
-      </div>
-      <div class="max-w-6xl mx-auto px-4 mt-6 grid md:grid-cols-3 gap-6">
-        <!-- Service Area -->
-        <div class="rounded-2xl bg-white card-soft">
-          <div class="p-6">
-            <div class="flex items-center gap-2" style="color: var(--brand);">
-              <!-- Map pin icon -->
-              <svg
-                class="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              <h3 class="font-semibold">Service Area</h3>
-            </div>
-            <p class="mt-2 text-sm" style="color: #627d98;">
-              Snohomish &amp; King County
-            </p>
-          </div>
-        </div>
-
-        <!-- Mobility Types -->
-        <div class="rounded-2xl bg-white card-soft">
-          <div class="p-6">
-            <div class="flex items-center gap-2" style="color: var(--brand);">
-              <!-- Wheelchair icon -->
-              <svg
-                class="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <circle cx="7" cy="17" r="3" />
-                <path d="M14 7a2 2 0 1 0-4 0v5h4l3 6" />
-                <path d="M6 14l2-2" />
-                <path d="M13 12h4" />
-              </svg>
-              <h3 class="font-semibold">Mobility Types</h3>
-            </div>
-            <p class="mt-2 text-sm" style="color: #627d98;">
-              Ambulatory &amp; Wheelchair (no stretcher)
-            </p>
-          </div>
-        </div>
-
-        <!-- Booking -->
-        <div class="rounded-2xl bg-white card-soft">
-          <div class="p-6">
-            <div class="flex items-center gap-2" style="color: var(--brand);">
-              <!-- Phone icon -->
-              <svg
-                class="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path
-                  d="M22 16.92v2a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.1 4.18 2 2 0 0 1 5.11 2h2a2 2 0 0 1 2 1.72c.12.89.31 1.76.58 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.15a2 2 0 0 1 2.11-.45c.84.27 1.71.46 2.6.58A2 2 0 0 1 22 16.92z"
-                />
-              </svg>
-              <h3 class="font-semibold">Booking</h3>
-            </div>
-            <p class="mt-2 text-sm" style="color: #627d98;">
-              Call or request online
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="py-12">
-      <div class="max-w-6xl mx-auto px-4">
-        <h2
-          class="text-2xl md:text-3xl font-bold"
-          style="color: var(--brand-dark);"
-        >
-          What We Help You Get To
-        </h2>
-        <div class="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Appointments & Checkups -->
-          <div class="rounded-2xl bg-white card-soft">
-            <div class="p-6">
-              <div class="flex items-center gap-2" style="color: var(--brand);">
-                <!-- Car icon -->
-                <svg
-                  class="h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M3 13l2-5a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 5"/>
-                  <path d="M5 13h14" />
-                  <circle cx="7.5" cy="16.5" r="1.5" />
-                  <circle cx="16.5" cy="16.5" r="1.5" />
-                </svg>
-                <h3 class="font-semibold">Appointments &amp; Checkups</h3>
-              </div>
-              <p class="mt-2 text-sm" style="color: #627d98;">
-                Primary care, specialists, follow-ups.
-              </p>
-            </div>
-          </div>
-
-          <!-- Dialysis & Oncology -->
-          <div class="rounded-2xl bg-white card-soft">
-            <div class="p-6">
-              <div class="flex items-center gap-2" style="color: var(--brand);">
-                <svg
-                  class="h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M3 13l2-5a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 5"/>
-                  <path d="M5 13h14" />
-                  <circle cx="7.5" cy="16.5" r="1.5" />
-                  <circle cx="16.5" cy="16.5" r="1.5" />
-                </svg>
-                <h3 class="font-semibold">Dialysis &amp; Oncology</h3>
-              </div>
-              <p class="mt-2 text-sm" style="color: #627d98;">
-                Dialysis, chemo, radiation, infusion.
-              </p>
-            </div>
-          </div>
-
-          <!-- Therapy & Rehab -->
-          <div class="rounded-2xl bg-white card-soft">
-            <div class="p-6">
-              <div class="flex items-center gap-2" style="color: var(--brand);">
-                <svg
-                  class="h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M3 13l2-5a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 5"/>
-                  <path d="M5 13h14" />
-                  <circle cx="7.5" cy="16.5" r="1.5" />
-                  <circle cx="16.5" cy="16.5" r="1.5" />
-                </svg>
-                <h3 class="font-semibold">Therapy &amp; Rehab</h3>
-              </div>
-              <p class="mt-2 text-sm" style="color: #627d98;">
-                PT/OT, rehab centers, outpatient.
-              </p>
-            </div>
-          </div>
-
-          <!-- Hospitals & Clinics -->
-          <div class="rounded-2xl bg-white card-soft">
-            <div class="p-6">
-              <div class="flex items-center gap-2" style="color: var(--brand);">
-                <svg
-                  class="h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M3 13l2-5a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 5"/>
-                  <path d="M5 13h14" />
-                  <circle cx="7.5" cy="16.5" r="1.5" />
-                  <circle cx="16.5" cy="16.5" r="1.5" />
-                </svg>
-                <h3 class="font-semibold">Hospitals &amp; Clinics</h3>
-              </div>
-              <p class="mt-2 text-sm" style="color: #627d98;">
-                Door-to-door assistance for medical visits.
-              </p>
-            </div>
-          </div>
-
-          <!-- Airport Pickups & Drop-offs -->
-          <div class="rounded-2xl bg-white card-soft">
-            <div class="p-6">
-              <div class="flex items-center gap-2" style="color: var(--brand);">
-                <svg
-                  class="h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M2.5 19h19" />
-                  <path d="M9 3l1.5 6 5-3.5 1.5 3.5-4 3 1.5 5-2.5-1.5L9 19l-1.5-6-4-3 1.5-3.5 5 3.5L9 3z" />
-                </svg>
-                <h3 class="font-semibold">Airport Pickups &amp; Drop-offs</h3>
-              </div>
-              <p class="mt-2 text-sm" style="color: #627d98;">
-                Rides to and from the airport for medical travel or personal trips.
-              </p>
-            </div>
-          </div>
-
-          <!-- Games, Events & Outings -->
-          <div class="rounded-2xl bg-white card-soft">
-            <div class="p-6">
-              <div class="flex items-center gap-2" style="color: var(--brand);">
-                <svg
-                  class="h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <circle cx="12" cy="12" r="3" />
-                  <path d="M3 9l2-4h4l2 4-2 4H5z" />
-                  <path d="M13 15l2 4h4l2-4-2-4h-4z" />
-                </svg>
-                <h3 class="font-semibold">Games, Events &amp; Outings</h3>
-              </div>
-              <p class="mt-2 text-sm" style="color: #627d98;">
-                Transportation to games, community events, visits with friends, and other outings.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Social proof / safety -->
-    <section
-      class="py-10"
-      style="background: var(--subtle);"
-    >
-      <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6 items-stretch">
-        <div class="rounded-2xl bg-white card-soft">
-          <div class="p-6">
-            <h3 class="font-semibold" style="color: var(--brand-dark);">
-              Why choose us
-            </h3>
-            <ul class="mt-3 space-y-2 text-sm" style="color: #627d98;">
-              <li class="flex gap-2">
-                <span style="color: var(--brand);">✓</span>
-                On-time, courteous drivers
-              </li>
-              <li class="flex gap-2">
-                <span style="color: var(--brand);">✓</span>
-                Wheelchair securement training
-              </li>
-              <li class="flex gap-2">
-                <span style="color: var(--brand);">✓</span>
-                Caregiver rides free
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="rounded-2xl bg-white card-soft">
-          <div class="p-6">
-            <h3 class="font-semibold" style="color: var(--brand-dark);">
-              Insurance &amp; payment
-            </h3>
-            <p class="mt-2 text-sm" style="color: #627d98;">
-              Private pay; ask us about partners and coverage options.
-            </p>
-          </div>
-        </div>
-
-        <div class="rounded-2xl bg-white card-soft">
-          <div class="p-6">
-            <h3 class="font-semibold" style="color: var(--brand-dark);">
-              Safety &amp; compliance
-            </h3>
-            <p class="mt-2 text-sm" style="color: #627d98;">
-              Background-checked drivers, regular vehicle inspections, securement protocols.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Service Area -->
-    <section id="area" class="py-10">
-      <div class="max-w-6xl mx-auto px-4">
-        <h2
-          class="text-xl md:text-2xl font-bold"
-          style="color: var(--brand-dark);"
-        >
-          Service Area
+        <h2 class="text-2xl md:text-3xl font-bold" style="color: var(--brand-dark);">
+          See CareLoop in action
         </h2>
         <p class="mt-2 text-sm md:text-base" style="color: #627d98;">
-          CareLoop Mobility serves Snohomish &amp; King County, Washington. Call us if you have questions about
-          coverage for your pickup or drop-off location.
+          Real moments from non-emergency medical rides: helping riders into the van, supporting them on the way, and arriving safely at clinics and community locations.
         </p>
-      </div>
-    </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="py-10" style="background: var(--subtle);">
-      <div class="max-w-6xl mx-auto px-4">
-        <h2
-          class="text-xl md:text-2xl font-bold"
-          style="color: var(--brand-dark);"
-        >
-          Frequently Asked Questions
-        </h2>
-        <div class="mt-4 grid gap-4 md:grid-cols-2 text-sm" style="color: #627d98;">
-          <div class="rounded-2xl bg-white card-soft p-4">
-            <p class="font-semibold">How far in advance should I schedule?</p>
-            <p class="mt-1">
-              24–48 hours is recommended. Same-day trips may be available based on schedule.
-            </p>
+        <div class="mt-6 grid gap-6 md:grid-cols-3">
+
+          <!-- Card 1 -->
+          <div class="rounded-2xl overflow-hidden bg-white card-soft">
+            <img src="careloop-vehicle-exterior.jpg" class="h-48 w-full object-cover" />
+            <div class="p-4">
+              <h3 class="font-semibold" style="color: var(--brand-dark);">
+                Wheelchair-accessible vehicles
+              </h3>
+              <p class="mt-1 text-sm" style="color: #627d98;">
+                Modern vans with ramps and securement systems designed for riders using wheelchairs and mobility aids.
+              </p>
+            </div>
           </div>
-          <div class="rounded-2xl bg-white card-soft p-4">
-            <p class="font-semibold">Do you support wheelchair riders?</p>
-            <p class="mt-1">
-              Yes. We provide ambulatory and wheelchair transportation (no stretcher services).
-            </p>
+
+          <!-- Card 2 -->
+          <div class="rounded-2xl overflow-hidden bg-white card-soft">
+            <img src="driver-assisting-wheelchair.jpg" class="h-48 w-full object-cover" />
+            <div class="p-4">
+              <h3 class="font-semibold" style="color: var(--brand-dark);">
+                Gentle, supported pickup
+              </h3>
+              <p class="mt-1 text-sm" style="color: #627d98;">
+                Drivers help riders and caregivers get safely from the front door onto the ramp and into the vehicle.
+              </p>
+            </div>
           </div>
-          <div class="rounded-2xl bg-white card-soft p-4">
-            <p class="font-semibold">Can a caregiver ride along?</p>
-            <p class="mt-1">
-              Yes. One caregiver or family member can ride at no additional cost when space allows.
-            </p>
+
+          <!-- Card 3 -->
+          <div class="rounded-2xl overflow-hidden bg-white card-soft">
+            <img src="wheelchair-ramp-securement.jpg" class="h-48 w-full object-cover" />
+            <div class="p-4">
+              <h3 class="font-semibold" style="color: var(--brand-dark);">
+                Safe, secure ride & drop-off
+              </h3>
+              <p class="mt-1 text-sm" style="color: #627d98;">
+                Securement inside the vehicle and door-to-door support at clinics, dialysis centers, and hospitals.
+              </p>
+            </div>
           </div>
-          <div class="rounded-2xl bg-white card-soft p-4">
-            <p class="font-semibold">Do you schedule return trips?</p>
-            <p class="mt-1">
-              We can schedule return trips based on appointment length or facility discharge time.
-            </p>
-          </div>
+
         </div>
       </div>
     </section>
@@ -636,97 +232,67 @@
     <!-- CTA -->
     <section id="book" class="py-14">
       <div class="max-w-6xl mx-auto px-4 text-center">
-        <h2
-          class="text-2xl md:text-3xl font-bold"
-          style="color: var(--brand-dark);"
-        >
+        <h2 class="text-2xl md:text-3xl font-bold" style="color: var(--brand-dark);">
           Ready to ride?
         </h2>
         <p class="mt-2 text-sm md:text-base" style="color: #627d98;">
           Call now or request a ride online — we’ll confirm details quickly by phone.
         </p>
+
         <div class="mt-4 flex items-center justify-center gap-3 flex-wrap">
           <a href="tel:12064721001">
-            <button
-              class="btn-base px-6 py-3 text-base text-white"
-              style="background: var(--accent); min-width: 190px;"
-            >
-              <!-- Phone icon -->
-              <svg
-                class="h-4 w-4 mr-2"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path
-                  d="M22 16.92v2a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.1 4.18 2 2 0 0 1 5.11 2h2a2 2 0 0 1 2 1.72c.12.89.31 1.76.58 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.15a2 2 0 0 1 2.11-.45c.84.27 1.71.46 2.6.58A2 2 0 0 1 22 16.92z"
-                />
-              </svg>
+            <button class="btn-base px-6 py-3 text-base text-white" style="background: var(--accent);">
               206-472-1001
             </button>
           </a>
-          <a href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform?edit_requested=true" target="_blank" rel="noopener">
-            <button
-              class="btn-base px-6 py-3 text-base text-white"
-              style="background: var(--brand); min-width: 190px;"
-            >
+
+          <a href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform?edit_requested=true" target="_blank">
+            <button class="btn-base px-6 py-3 text-base text-white" style="background: var(--brand);">
               Open Ride Request Form
             </button>
           </a>
         </div>
+
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer
-    id="contact"
-    class="pt-10 pb-6"
-    style="background: var(--subtle);"
-  >
-    <div
-      class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6 text-sm"
-      style="color: #627d98;"
-    >
+  <!-- FOOTER -->
+  <footer id="contact" class="pt-10 pb-6" style="background: var(--subtle);">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6 text-sm" style="color: #627d98;">
+      
       <div>
         <div class="font-semibold" style="color: var(--brand-dark);">
           CareLoop Mobility
         </div>
-        <p class="mt-1">
-          Non-Emergency Medical Transportation • Snohomish &amp; King County
-        </p>
+        <p class="mt-1">Non-Emergency Medical Transportation • Snohomish & King County</p>
       </div>
+
       <div>
         <div class="font-semibold mb-1" style="color: var(--brand-dark);">
           Contact
         </div>
-        <div>
-          Phone:
-          <a class="underline ml-1" href="tel:12064721001">
-            206-472-1001
-          </a>
-        </div>
+        <a href="tel:12064721001" class="underline">206-472-1001</a>
       </div>
+
       <div>
         <div class="font-semibold mb-1" style="color: var(--brand-dark);">
           Quick Links
         </div>
         <div class="flex flex-col gap-1">
-          <a class="hover:underline" href="#services">Services</a>
-          <a class="hover:underline" href="#area">Service Area</a>
-          <a class="hover:underline" href="#faq">FAQ</a>
-          <a class="hover:underline" href="#book">Book a Ride</a>
+          <a href="#services" class="hover:underline">Services</a>
+          <a href="#area" class="hover:underline">Service Area</a>
+          <a href="#faq" class="hover:underline">FAQ</a>
+          <a href="#book" class="hover:underline">Book a Ride</a>
         </div>
       </div>
+
     </div>
 
-    <!-- Policy links row -->
+    <!-- Policies -->
     <div class="max-w-6xl mx-auto px-4 mt-6 pt-4 border-t text-xs md:text-sm flex flex-col md:flex-row items-center justify-between gap-2" style="border-color:#d9e2ec; color:#9fb3c8;">
       <span>© <span id="year"></span> CareLoop Mobility. All rights reserved.</span>
+
       <div class="flex flex-wrap items-center gap-3">
         <a href="privacy.html" class="hover:underline">Privacy Policy</a>
         <span>•</span>
@@ -740,8 +306,8 @@
   </footer>
 
   <script>
-    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
