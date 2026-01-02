@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>CareLoop Mobility – Non-Emergency Medical Transportation</title>
+  <title>CareLoop Mobility | Non-Emergency Medical Transportation (NEMT)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="CareLoop Mobility provides safe, reliable ambulatory and wheelchair non-emergency medical transportation in Snohomish and King County." />
+
+  <meta name="description" content="CareLoop Mobility provides safe, reliable ambulatory and wheelchair non-emergency medical transportation across Snohomish & King County. Call or request a ride online." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Canonical (update to your real domain URL) -->
+  <link rel="canonical" href="https://example.com/" />
+
+  <!-- Open Graph (update url + image paths to your production URLs) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="CareLoop Mobility | Non-Emergency Medical Transportation (NEMT)" />
+  <meta property="og:description" content="Safe, reliable ambulatory and wheelchair transportation across Snohomish & King County. Call or request online." />
+  <meta property="og:url" content="https://example.com/" />
+  <meta property="og:image" content="https://example.com/og-careloop.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CareLoop Mobility | NEMT" />
+  <meta name="twitter:description" content="Safe, reliable ambulatory & wheelchair transportation across Snohomish & King County." />
+  <meta name="twitter:image" content="https://example.com/og-careloop.jpg" />
+
+  <!-- Performance: preconnect -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -19,6 +40,7 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #fff;
     }
 
     .btn-base {
@@ -29,7 +51,11 @@
       padding: 0.7rem 1.4rem;
       font-weight: 600;
       white-space: nowrap;
+      transition: transform 120ms ease, opacity 120ms ease;
     }
+
+    .btn-base:active { transform: scale(0.98); }
+    .btn-base:hover { opacity: 0.95; }
 
     .shadow-soft {
       box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
@@ -39,159 +65,507 @@
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
     }
 
+    /* Mobile: buttons full width */
     @media (max-width: 640px) {
-      .btn-base {
-        width: 100%;
-      }
+      .btn-base { width: 100%; }
+    }
+
+    /* Sticky mobile action bar spacing (prevents footer overlap) */
+    .has-mobile-bar {
+      padding-bottom: 88px; /* space for sticky bar on mobile */
+    }
+    @media (min-width: 768px) {
+      .has-mobile-bar { padding-bottom: 0; }
     }
   </style>
+
+  <!-- Schema.org: LocalBusiness + Service (update address/geo if you want) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "CareLoop Mobility",
+    "description": "Non-Emergency Medical Transportation (NEMT) providing ambulatory and wheelchair transportation across Snohomish & King County.",
+    "telephone": "+1-206-472-1001",
+    "url": "https://example.com/",
+    "areaServed": ["Snohomish County, WA", "King County, WA"],
+    "serviceType": ["Non-Emergency Medical Transportation", "Wheelchair Transportation", "Ambulatory Transportation"],
+    "sameAs": [],
+    "offers": {
+      "@type": "Offer",
+      "name": "Ride Request",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <!-- Google Analytics 4 (Optional): Replace G-XXXXXXX with your Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    // If you don't have GA4 yet, leave G-XXXXXXX and nothing will meaningfully track.
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX', { anonymize_ip: true });
+  </script>
+
+  <!-- Meta Pixel (Optional): Replace YOUR_PIXEL_ID -->
+  <script>
+    // If you don't have a Pixel yet, you can leave this disabled by keeping YOUR_PIXEL_ID.
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
 </head>
 
-<body class="bg-white min-h-screen">
+<body class="min-h-screen has-mobile-bar">
 
-<!-- HEADER -->
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b" style="border-color:var(--subtle);">
-  <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b" style="border-color:var(--subtle);">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
 
-    <img src="logo.png" alt="CareLoop Mobility" class="h-20 sm:h-24 w-auto" />
+      <img
+        src="logo.png"
+        alt="CareLoop Mobility"
+        class="h-20 sm:h-24 w-auto"
+        decoding="async"
+        fetchpriority="high"
+      />
 
-    <nav class="hidden md:flex gap-8 font-medium" style="color:var(--brand-dark);">
-      <a href="#services" class="hover:underline">Services</a>
-      <a href="#area" class="hover:underline">Service Area</a>
-      <a href="#faq" class="hover:underline">FAQ</a>
-      <a href="#contact" class="hover:underline">Contact</a>
-    </nav>
+      <nav class="hidden md:flex gap-8 font-medium" style="color:var(--brand-dark);">
+        <a href="#services" class="hover:underline">Services</a>
+        <a href="#area" class="hover:underline">Service Area</a>
+        <a href="#faq" class="hover:underline">FAQ</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </nav>
 
-    <a href="tel:12064721001" class="hidden md:block">
-      <button class="btn-base text-white" style="background:var(--accent);">
-        Call Now
+      <a href="tel:12064721001" class="hidden md:block">
+        <button class="btn-base text-white" style="background:var(--accent);">
+          Call Now
+        </button>
+      </a>
+
+      <!-- Hamburger -->
+      <button id="menuBtn" class="md:hidden text-3xl" style="color:var(--brand-dark);" aria-label="Open menu" aria-expanded="false">
+        ☰
       </button>
-    </a>
+    </div>
 
-    <!-- Hamburger -->
-    <button id="menuBtn" class="md:hidden text-3xl" style="color:var(--brand-dark);">☰</button>
-  </div>
+    <!-- Mobile Menu -->
+    <nav id="mobileMenu" class="hidden flex-col gap-4 px-4 py-4 border-t md:hidden" style="border-color:var(--subtle); color:var(--brand-dark);">
+      <a href="#services" class="py-1">Services</a>
+      <a href="#area" class="py-1">Service Area</a>
+      <a href="#faq" class="py-1">FAQ</a>
+      <a href="#contact" class="py-1">Contact</a>
+      <a href="tel:12064721001">
+        <button class="btn-base text-white mt-2" style="background:var(--accent);">Call Now</button>
+      </a>
+    </nav>
+  </header>
 
-  <!-- Mobile Menu -->
-  <nav id="mobileMenu" class="hidden flex-col gap-4 px-4 py-4 border-t md:hidden" style="border-color:var(--subtle);">
-    <a href="#services">Services</a>
-    <a href="#area">Service Area</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-    <a href="tel:12064721001">
-      <button class="btn-base text-white mt-2" style="background:var(--accent);">Call Now</button>
-    </a>
-  </nav>
-</header>
+  <!-- MAIN -->
+  <main>
 
-<!-- HERO -->
-<section class="py-12">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-4 items-center">
+    <!-- HERO -->
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-4 items-center">
 
-    <!-- LEFT -->
-    <div>
-      <h1 class="text-3xl md:text-5xl font-bold leading-tight" style="color:var(--brand-dark);">
-        Getting You to Your Appointments<br class="hidden md:block" />Safely and On Time
-      </h1>
+        <!-- Left -->
+        <div>
+          <h1 class="text-3xl md:text-5xl font-bold leading-tight" style="color:var(--brand-dark);">
+            Getting You to Your Appointments
+            <br class="hidden md:block" />
+            Safely and On Time
+          </h1>
 
-      <p class="mt-4 text-base md:text-lg text-slate-600">
-        Door-to-door ambulatory and wheelchair transportation across Snohomish & King County.
-      </p>
+          <p class="mt-4 text-base md:text-lg text-slate-600">
+            Door-to-door ambulatory and wheelchair transportation across Snohomish &amp; King County.
+          </p>
 
-      <div class="mt-6 flex flex-wrap gap-3">
-        <a href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform" target="_blank">
-          <button class="btn-base text-white w-full sm:w-auto" style="background:var(--brand);">
-            Request a Ride
-          </button>
-        </a>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a
+              href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform"
+              target="_blank"
+              rel="noopener"
+            >
+              <button class="btn-base text-white w-full sm:w-auto" style="background:var(--brand);">
+                Request a Ride
+              </button>
+            </a>
 
-        <a href="tel:12064721001">
-          <button class="btn-base border w-full sm:w-auto" style="border-color:var(--brand); color:var(--brand);">
-            206-472-1001
-          </button>
-        </a>
+            <a href="tel:12064721001">
+              <button class="btn-base border w-full sm:w-auto" style="border-color:var(--brand); color:var(--brand);">
+                206-472-1001
+              </button>
+            </a>
+          </div>
+
+          <!-- trust pills -->
+          <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
+            <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="background:var(--subtle);">
+              <span class="inline-flex h-5 w-5 items-center justify-center rounded-full" style="background:#e3fcec; color:var(--brand);">✓</span>
+              <span>On-time &amp; insured</span>
+            </div>
+            <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="background:var(--subtle);">
+              <span class="inline-flex h-5 w-5 items-center justify-center rounded-full" style="background:#e3fcec; color:var(--brand);">✓</span>
+              <span>Caregiver rides free</span>
+            </div>
+            <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="background:var(--subtle);">
+              <span class="inline-flex h-5 w-5 items-center justify-center rounded-full" style="background:#e3fcec; color:var(--brand);">✓</span>
+              <span>Wheelchair &amp; ambulatory</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right card -->
+        <div class="rounded-2xl bg-white border shadow-soft p-6" style="border-color:#e1e7ef;">
+          <h3 class="text-xl font-semibold" style="color:var(--brand-dark);">Quick Ride Request</h3>
+          <p class="text-sm text-slate-500 mt-1">Share a few details and we’ll call to confirm your trip.</p>
+
+          <div class="grid gap-3 mt-4">
+            <input class="border rounded-lg px-3 py-2 text-sm" style="border-color:#d9e2ec;" placeholder="Your Name" />
+            <input class="border rounded-lg px-3 py-2 text-sm" style="border-color:#d9e2ec;" placeholder="Phone Number" />
+            <input class="border rounded-lg px-3 py-2 text-sm" style="border-color:#d9e2ec;" placeholder="Pickup Address" />
+            <input class="border rounded-lg px-3 py-2 text-sm" style="border-color:#d9e2ec;" placeholder="Destination" />
+          </div>
+
+          <a
+            href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform"
+            target="_blank"
+            rel="noopener"
+          >
+            <button class="btn-base text-white mt-4 w-full" style="background:var(--brand);">
+              Submit Request
+            </button>
+          </a>
+
+          <p class="mt-3 text-xs text-slate-500">
+            Prefer the full form?
+            <a class="underline" href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform" target="_blank" rel="noopener">
+              Open Ride Request Form
+            </a>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- See CareLoop in action -->
+    <section class="py-10">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold" style="color:var(--brand-dark);">See CareLoop in action</h2>
+        <p class="mt-2 text-sm md:text-base text-slate-600">
+          Real moments from non-emergency medical rides: helping riders into the van, supporting them on the way, and arriving safely.
+        </p>
+
+        <div class="mt-6 grid gap-6 md:grid-cols-3">
+          <div class="rounded-2xl overflow-hidden bg-white card-soft">
+            <img
+              src="careloop-vehicle-exterior.jpg"
+              alt="Wheelchair-accessible van with ramp"
+              class="w-full aspect-video object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="p-4">
+              <h3 class="font-semibold" style="color:var(--brand-dark);">Wheelchair-accessible vehicles</h3>
+              <p class="mt-1 text-sm text-slate-600">Modern vans with ramps and securement systems.</p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl overflow-hidden bg-white card-soft">
+            <img
+              src="driver-assisting-wheelchair.jpg"
+              alt="Driver assisting a rider onto the ramp"
+              class="w-full aspect-video object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="p-4">
+              <h3 class="font-semibold" style="color:var(--brand-dark);">Gentle, supported pickup</h3>
+              <p class="mt-1 text-sm text-slate-600">Door-to-vehicle support for riders and caregivers.</p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl overflow-hidden bg-white card-soft">
+            <img
+              src="wheelchair-ramp-securement.jpg"
+              alt="Wheelchair securement inside transport van"
+              class="w-full aspect-video object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="p-4">
+              <h3 class="font-semibold" style="color:var(--brand-dark);">Safe, secure ride</h3>
+              <p class="mt-1 text-sm text-slate-600">Securement and door-to-door assistance at drop-off.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-12">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold" style="color:var(--brand-dark);">What We Help You Get To</h2>
+
+        <div class="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Cards (kept consistent) -->
+          <div class="rounded-2xl bg-white card-soft">
+            <div class="p-6">
+              <h3 class="font-semibold" style="color:var(--brand-dark);">Appointments &amp; Checkups</h3>
+              <p class="mt-2 text-sm text-slate-600">Primary care, specialists, follow-ups.</p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-white card-soft">
+            <div class="p-6">
+              <h3 class="font-semibold" style="color:var(--brand-dark);">Dialysis &amp; Oncology</h3>
+              <p class="mt-2 text-sm text-slate-600">Dialysis, chemo, radiation, infusion.</p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-white card-soft">
+            <div class="p-6">
+              <h3 class="font-semibold" style="color:var(--brand-dark);">Therapy &amp; Rehab</h3>
+              <p class="mt-2 text-sm text-slate-600">PT/OT, rehab centers, outpatient.</p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-white card-soft">
+            <div class="p-6">
+              <h3 class="font-semibold" style="color:var(--brand-dark);">Hospitals &amp; Clinics</h3>
+              <p class="mt-2 text-sm text-slate-600">Door-to-door assistance for medical visits.</p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-white card-soft">
+            <div class="p-6">
+              <h3 class="font-semibold" style="color:var(--brand-dark);">Airport pickups &amp; drop-offs</h3>
+              <p class="mt-2 text-sm text-slate-600">Rides to and from the airport for travel.</p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-white card-soft">
+            <div class="p-6">
+              <h3 class="font-semibold" style="color:var(--brand-dark);">Games, events &amp; outings</h3>
+              <p class="mt-2 text-sm text-slate-600">Community events, visits, and outings.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Area -->
+    <section id="area" class="py-10">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-xl md:text-2xl font-bold" style="color:var(--brand-dark);">Service Area</h2>
+        <p class="mt-2 text-sm md:text-base text-slate-600">
+          CareLoop Mobility serves Snohomish &amp; King County, Washington. Call us if you have questions about coverage.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-10" style="background:var(--subtle);">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-xl md:text-2xl font-bold" style="color:var(--brand-dark);">Frequently Asked Questions</h2>
+        <div class="mt-4 grid gap-4 md:grid-cols-2 text-sm text-slate-600">
+          <div class="rounded-2xl bg-white card-soft p-4">
+            <p class="font-semibold" style="color:var(--brand-dark);">How far in advance should I schedule?</p>
+            <p class="mt-1">24–48 hours is recommended. Same-day trips may be available based on schedule.</p>
+          </div>
+          <div class="rounded-2xl bg-white card-soft p-4">
+            <p class="font-semibold" style="color:var(--brand-dark);">Do you support wheelchair riders?</p>
+            <p class="mt-1">Yes. We provide ambulatory and wheelchair transportation (no stretcher services).</p>
+          </div>
+          <div class="rounded-2xl bg-white card-soft p-4">
+            <p class="font-semibold" style="color:var(--brand-dark);">Can a caregiver ride along?</p>
+            <p class="mt-1">Yes. One caregiver or family member can ride at no additional cost when space allows.</p>
+          </div>
+          <div class="rounded-2xl bg-white card-soft p-4">
+            <p class="font-semibold" style="color:var(--brand-dark);">Do you schedule return trips?</p>
+            <p class="mt-1">We can schedule return trips based on appointment length or facility discharge time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-14" style="background:var(--subtle);">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-xl md:text-2xl font-bold" style="color:var(--brand-dark);">Contact &amp; Ride Requests</h2>
+        <p class="mt-2 text-sm md:text-base text-slate-600">
+          Have questions about service, scheduling, or coverage? Reach out and we’ll be happy to help.
+        </p>
+
+        <div class="mt-6 grid gap-8 md:grid-cols-2 items-start">
+
+          <div class="text-sm text-slate-600">
+            <div class="rounded-2xl bg-white card-soft p-6 mb-4">
+              <h3 class="font-semibold mb-2 text-base" style="color:var(--brand-dark);">Phone</h3>
+              <p>
+                <strong><a href="tel:12064721001" class="underline">(206) 472-1001</a></strong><br />
+                Call our coordination team for bookings, questions, or updates.
+              </p>
+            </div>
+
+            <div class="rounded-2xl bg-white card-soft p-6">
+              <h3 class="font-semibold mb-2 text-base" style="color:var(--brand-dark);">Full online request form</h3>
+              <p>Prefer to complete all details online?</p>
+              <a
+                href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform"
+                target="_blank"
+                rel="noopener"
+              >
+                <button class="btn-base mt-3 text-white" style="background:var(--brand);">
+                  Open Ride Request Form
+                </button>
+              </a>
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-white card-soft p-6">
+            <h3 class="text-lg font-semibold" style="color:var(--brand-dark);">Quick Contact Form</h3>
+            <p class="text-xs mt-1 text-slate-500">Share a few details and we’ll reach out to confirm.</p>
+
+            <div class="mt-4 grid grid-cols-1 gap-3">
+              <input class="border rounded-lg px-3 py-2 text-sm" style="border-color:#d9e2ec;" placeholder="Your Name" />
+              <input class="border rounded-lg px-3 py-2 text-sm" style="border-color:#d9e2ec;" placeholder="Phone Number" />
+              <input class="border rounded-lg px-3 py-2 text-sm" style="border-color:#d9e2ec;" placeholder="Email (optional)" />
+              <input class="border rounded-lg px-3 py-2 text-sm" style="border-color:#d9e2ec;" placeholder="Pickup Address" />
+              <input class="border rounded-lg px-3 py-2 text-sm" style="border-color:#d9e2ec;" placeholder="Destination" />
+              <textarea class="border rounded-lg px-3 py-2 text-sm" style="border-color:#d9e2ec;" rows="3" placeholder="Questions or special instructions (optional)"></textarea>
+            </div>
+
+            <a
+              href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform"
+              target="_blank"
+              rel="noopener"
+            >
+              <button class="btn-base mt-4 w-full text-white" style="background:var(--brand);" type="button">
+                Submit Contact Request
+              </button>
+            </a>
+
+            <p class="mt-3 text-xs text-slate-500">We’ll review your request and follow up by phone.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="book" class="py-14">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold" style="color:var(--brand-dark);">Ready to ride?</h2>
+        <p class="mt-2 text-sm md:text-base text-slate-600">Call now or request a ride online — we’ll confirm details quickly by phone.</p>
+
+        <div class="mt-4 flex items-center justify-center gap-3 flex-wrap">
+          <a href="tel:12064721001">
+            <button class="btn-base px-6 py-3 text-base text-white" style="background:var(--accent); min-width:190px;">
+              206-472-1001
+            </button>
+          </a>
+          <a href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform" target="_blank" rel="noopener">
+            <button class="btn-base px-6 py-3 text-base text-white" style="background:var(--brand); min-width:190px;">
+              Open Ride Request Form
+            </button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="pt-10 pb-6" style="background:var(--subtle);">
+    <div class="max-w-6xl mx-auto px-4 grid gap-6 md:grid-cols-3 text-sm text-slate-600 text-center md:text-left">
+      <div>
+        <div class="font-semibold" style="color:var(--brand-dark);">CareLoop Mobility</div>
+        <p class="mt-1">Non-Emergency Medical Transportation • Snohomish &amp; King County</p>
+      </div>
+
+      <div>
+        <div class="font-semibold mb-1" style="color:var(--brand-dark);">Contact</div>
+        <div>Phone: <a class="underline ml-1" href="tel:12064721001">206-472-1001</a></div>
+      </div>
+
+      <div>
+        <div class="font-semibold mb-1" style="color:var(--brand-dark);">Quick Links</div>
+        <div class="flex flex-col gap-1">
+          <a class="hover:underline" href="#services">Services</a>
+          <a class="hover:underline" href="#area">Service Area</a>
+          <a class="hover:underline" href="#faq">FAQ</a>
+          <a class="hover:underline" href="#book">Book a Ride</a>
+        </div>
       </div>
     </div>
 
-    <!-- RIGHT CARD -->
-    <div class="rounded-2xl bg-white border shadow-soft p-6">
-      <h3 class="text-xl font-semibold" style="color:var(--brand-dark);">Quick Ride Request</h3>
-      <p class="text-sm text-slate-500 mt-1">Share a few details and we’ll call to confirm.</p>
-
-      <div class="grid gap-3 mt-4">
-        <input class="border rounded-lg px-3 py-2 text-sm" placeholder="Your Name" />
-        <input class="border rounded-lg px-3 py-2 text-sm" placeholder="Phone Number" />
-        <input class="border rounded-lg px-3 py-2 text-sm" placeholder="Pickup Address" />
-        <input class="border rounded-lg px-3 py-2 text-sm" placeholder="Destination" />
+    <div class="max-w-6xl mx-auto px-4 mt-6 pt-4 border-t text-xs md:text-sm flex flex-col md:flex-row items-center justify-between gap-2"
+         style="border-color:#d9e2ec; color:#94a3b8;">
+      <span>© <span id="year"></span> CareLoop Mobility. All rights reserved.</span>
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="privacy.html" class="hover:underline">Privacy Policy</a>
+        <span>•</span>
+        <a href="terms.html" class="hover:underline">Terms of Service</a>
+        <span>•</span>
+        <a href="refund.html" class="hover:underline">Refund Policy</a>
+        <span>•</span>
+        <a href="notice.html" class="hover:underline">Notice of Data Practices</a>
       </div>
+    </div>
+  </footer>
 
-      <a href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform" target="_blank">
-        <button class="btn-base text-white mt-4 w-full" style="background:var(--brand);">
-          Submit Request
+  <!-- Sticky Mobile Action Bar -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden border-t bg-white/95 backdrop-blur px-3 py-3"
+       style="border-color:var(--subtle);">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 gap-3">
+      <a href="tel:12064721001" class="w-full">
+        <button class="btn-base w-full text-white" style="background:var(--accent);">
+          Call
+        </button>
+      </a>
+      <a
+        href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform"
+        target="_blank"
+        rel="noopener"
+        class="w-full"
+      >
+        <button class="btn-base w-full text-white" style="background:var(--brand);">
+          Request
         </button>
       </a>
     </div>
-
-  </div>
-</section>
-
-<!-- IMAGE CARDS -->
-<section class="py-10">
-  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6">
-    <div class="card-soft rounded-2xl overflow-hidden bg-white">
-      <img src="careloop-vehicle-exterior.jpg" class="w-full aspect-video object-cover" />
-      <div class="p-4">
-        <h3 class="font-semibold" style="color:var(--brand-dark);">Wheelchair Vehicles</h3>
-        <p class="text-sm text-slate-600">Accessible vans with securement.</p>
-      </div>
-    </div>
-
-    <div class="card-soft rounded-2xl overflow-hidden bg-white">
-      <img src="driver-assisting-wheelchair.jpg" class="w-full aspect-video object-cover" />
-      <div class="p-4">
-        <h3 class="font-semibold" style="color:var(--brand-dark);">Assisted Pickup</h3>
-        <p class="text-sm text-slate-600">Door-to-vehicle support.</p>
-      </div>
-    </div>
-
-    <div class="card-soft rounded-2xl overflow-hidden bg-white">
-      <img src="wheelchair-ramp-securement.jpg" class="w-full aspect-video object-cover" />
-      <div class="p-4">
-        <h3 class="font-semibold" style="color:var(--brand-dark);">Safe Transport</h3>
-        <p class="text-sm text-slate-600">Secure rides & drop-offs.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-slate-50 pt-10 pb-6">
-  <div class="max-w-6xl mx-auto px-4 grid gap-6 md:grid-cols-3 text-sm text-slate-600 text-center md:text-left">
-    <div>
-      <strong style="color:var(--brand-dark);">CareLoop Mobility</strong>
-      <p>Non-Emergency Medical Transportation</p>
-    </div>
-    <div>
-      Phone:
-      <a href="tel:12064721001" class="underline ml-1">206-472-1001</a>
-    </div>
-    <div class="flex flex-col gap-1">
-      <a href="#services">Services</a>
-      <a href="#area">Service Area</a>
-      <a href="#faq">FAQ</a>
-    </div>
   </div>
 
-  <div class="mt-6 text-xs text-center text-slate-400">
-    © <span id="year"></span> CareLoop Mobility
-  </div>
-</footer>
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-  document.getElementById("menuBtn").onclick = () =>
-    document.getElementById("mobileMenu").classList.toggle("hidden");
-</script>
+    // Hamburger toggle + a11y state
+    const btn = document.getElementById("menuBtn");
+    const menu = document.getElementById("mobileMenu");
+
+    btn.addEventListener("click", () => {
+      const isHidden = menu.classList.toggle("hidden");
+      btn.setAttribute("aria-expanded", String(!isHidden));
+    });
+
+    // Close mobile menu when clicking a link
+    menu.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        menu.classList.add("hidden");
+        btn.setAttribute("aria-expanded", "false");
+      });
+    });
+  </script>
 
 </body>
 </html>
