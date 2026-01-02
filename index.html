@@ -2,14 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>CareLoop Mobility | Non-Emergency Medical Transportation (NEMT)</title>
+  <title>CareLoop Mobility | Non-Emergency Medical Transportation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="CareLoop Mobility provides safe, reliable ambulatory and wheelchair non-emergency medical transportation across Snohomish & King County." />
+  <meta name="description"
+        content="Safe, reliable ambulatory and wheelchair non-emergency medical transportation across Snohomish & King County." />
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://your-domain-here.com/" />
-
-  <!-- Tailwind CDN -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -22,7 +20,6 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #ffffff;
     }
 
     .btn-base {
@@ -35,29 +32,24 @@
       white-space: nowrap;
     }
 
-    .shadow-soft {
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
-    }
-
-    .card-soft {
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-    }
-
-    @media (max-width: 640px) {
-      .btn-base { width: 100%; }
+    section {
+      scroll-margin-top: 96px; /* fixes sticky header overlap */
     }
   </style>
 </head>
 
-<body class="min-h-screen">
+<body class="min-h-screen bg-white">
 
 <!-- HEADER -->
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b" style="border-color:var(--subtle);">
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b"
+        style="border-color:var(--subtle);">
   <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
 
-    <img src="logo.png" alt="CareLoop Mobility" class="h-20 sm:h-24 w-auto" />
+    <img src="logo.png" alt="CareLoop Mobility" class="h-20 w-auto" />
 
-    <nav class="hidden md:flex gap-8 font-medium" style="color:var(--brand-dark);">
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex gap-8 font-medium"
+         style="color:var(--brand-dark);">
       <a href="#services" class="hover:underline">Services</a>
       <a href="#area" class="hover:underline">Service Area</a>
       <a href="#faq" class="hover:underline">FAQ</a>
@@ -65,26 +57,32 @@
     </nav>
 
     <a href="tel:12064721001" class="hidden md:block">
-      <button class="btn-base text-white" style="background:var(--accent);">
+      <button class="btn-base text-white"
+              style="background:var(--accent);">
         Call Now
       </button>
     </a>
 
     <!-- Hamburger -->
-    <button id="menuBtn" class="md:hidden text-3xl" style="color:var(--brand-dark);">
+    <button id="menuBtn"
+            aria-label="Open navigation menu"
+            class="md:hidden text-3xl"
+            style="color:var(--brand-dark);">
       ☰
     </button>
   </div>
 
   <!-- Mobile Menu -->
-  <nav id="mobileMenu" class="hidden flex-col gap-4 px-4 py-4 border-t md:hidden"
+  <nav id="mobileMenu"
+       class="hidden flex-col gap-4 px-4 py-4 border-t md:hidden"
        style="border-color:var(--subtle); color:var(--brand-dark);">
-    <a href="#services">Services</a>
-    <a href="#area">Service Area</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#area" onclick="closeMenu()">Service Area</a>
+    <a href="#faq" onclick="closeMenu()">FAQ</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
     <a href="tel:12064721001">
-      <button class="btn-base text-white mt-2" style="background:var(--accent);">
+      <button class="btn-base text-white mt-2 w-full"
+              style="background:var(--accent);">
         Call Now
       </button>
     </a>
@@ -95,39 +93,40 @@
 <section class="py-12">
   <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-4 items-center">
 
-    <!-- Left -->
     <div>
-      <h1 class="text-3xl md:text-5xl font-bold leading-tight" style="color:var(--brand-dark);">
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight"
+          style="color:var(--brand-dark);">
         Getting You to Your Appointments<br class="hidden md:block" />
         Safely and On Time
       </h1>
 
-      <p class="mt-4 text-base md:text-lg text-slate-600">
-        Door-to-door ambulatory and wheelchair transportation across Snohomish &amp; King County.
+      <p class="mt-4 text-lg text-slate-600">
+        Door-to-door ambulatory and wheelchair transportation across
+        Snohomish &amp; King County.
       </p>
 
       <div class="mt-6 flex flex-wrap gap-3">
-        <a href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform" target="_blank">
-          <button class="btn-base text-white" style="background:var(--brand);">
+        <a href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform"
+           target="_blank">
+          <button class="btn-base text-white"
+                  style="background:var(--brand);">
             Request a Ride
           </button>
         </a>
         <a href="tel:12064721001">
-          <button class="btn-base border" style="border-color:var(--brand); color:var(--brand);">
+          <button class="btn-base border"
+                  style="border-color:var(--brand); color:var(--brand);">
             206-472-1001
           </button>
         </a>
       </div>
     </div>
 
-    <!-- Right Card -->
-    <div class="rounded-2xl bg-white border shadow-soft p-6">
-      <h3 class="text-xl font-semibold" style="color:var(--brand-dark);">
+    <div class="rounded-2xl bg-white border shadow-lg p-6">
+      <h3 class="text-xl font-semibold"
+          style="color:var(--brand-dark);">
         Quick Ride Request
       </h3>
-      <p class="text-sm text-slate-500 mt-1">
-        Share a few details and we’ll call to confirm.
-      </p>
 
       <div class="grid gap-3 mt-4">
         <input class="border rounded-lg px-3 py-2 text-sm" placeholder="Your Name" />
@@ -136,8 +135,10 @@
         <input class="border rounded-lg px-3 py-2 text-sm" placeholder="Destination" />
       </div>
 
-      <a href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform" target="_blank">
-        <button class="btn-base text-white mt-4 w-full" style="background:var(--brand);">
+      <a href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform"
+         target="_blank">
+        <button class="btn-base text-white mt-4 w-full"
+                style="background:var(--brand);">
           Submit Request
         </button>
       </a>
@@ -145,61 +146,84 @@
   </div>
 </section>
 
+<!-- SERVICES -->
+<section id="services" class="py-14 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl font-bold"
+        style="color:var(--brand-dark);">
+      Services
+    </h2>
+    <p class="mt-2 text-slate-600">
+      Medical appointments, dialysis, therapy, hospital visits, airport transportation and more.
+    </p>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section id="area" class="py-14">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl font-bold"
+        style="color:var(--brand-dark);">
+      Service Area
+    </h2>
+    <p class="mt-2 text-slate-600">
+      Snohomish &amp; King County, Washington.
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-14 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl font-bold"
+        style="color:var(--brand-dark);">
+      Frequently Asked Questions
+    </h2>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-14">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl font-bold"
+        style="color:var(--brand-dark);">
+      Contact
+    </h2>
+    <p class="mt-2 text-slate-600">
+      Call or submit a ride request — we’ll confirm details by phone.
+    </p>
+  </div>
+</section>
+
 <!-- FOOTER -->
-<footer class="pt-10 pb-6" style="background:var(--subtle);">
-  <div class="max-w-6xl mx-auto px-4 grid gap-6 md:grid-cols-3 text-sm text-slate-600 text-center md:text-left">
-    <div>
-      <strong style="color:var(--brand-dark);">CareLoop Mobility</strong>
-      <p>Non-Emergency Medical Transportation</p>
-    </div>
-    <div>
-      Phone:
-      <a href="tel:12064721001" class="underline ml-1">206-472-1001</a>
-    </div>
-    <div class="flex flex-col gap-1">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="refund.html">Refund Policy</a>
-      <a href="notice.html">Notice of Data Practices</a>
-    </div>
-  </div>
-
-  <div class="max-w-6xl mx-auto px-4 mt-6 pt-4 border-t text-xs text-slate-500 text-center"
-       style="border-color:#d9e2ec;">
+<footer class="pt-10 pb-6"
+        style="background:var(--subtle);">
+  <div class="max-w-6xl mx-auto px-4 text-center text-sm text-slate-600">
     © <span id="year"></span> CareLoop Mobility. All rights reserved.
-  </div>
-
-  <!-- CREATOR CREDIT (INDEX ONLY) -->
-  <div class="text-center mt-2 text-xs" style="color:#9ca3af;">
-    Website created by
-    <a href="https://cyber-node.com" target="_blank" rel="noopener"
-       style="color:#0b4f7f; text-decoration:underline;">
-      Cyber-Node.com
-    </a>
+    <br />
+    <span class="text-xs text-slate-400">
+      Website created by
+      <a href="https://cyber-node.com"
+         target="_blank"
+         class="underline"
+         style="color:#0b4f7f;">
+        Cyber-Node.com
+      </a>
+    </span>
   </div>
 </footer>
 
-<!-- Sticky Mobile Action Bar -->
-<div class="fixed bottom-0 left-0 right-0 z-50 md:hidden border-t bg-white px-3 py-3"
-     style="border-color:var(--subtle);">
-  <div class="grid grid-cols-2 gap-3">
-    <a href="tel:12064721001">
-      <button class="btn-base w-full text-white" style="background:var(--accent);">
-        Call
-      </button>
-    </a>
-    <a href="https://docs.google.com/forms/d/1RCYkBXQ1ZBkhFDDUNTwBCcRbH8F4oq5SNOm7Ja-c4aY/viewform" target="_blank">
-      <button class="btn-base w-full text-white" style="background:var(--brand);">
-        Request
-      </button>
-    </a>
-  </div>
-</div>
-
+<!-- SCRIPTS -->
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
-  document.getElementById("menuBtn").onclick = () =>
+
+  document.getElementById("menuBtn").onclick = () => {
     document.getElementById("mobileMenu").classList.toggle("hidden");
+  };
+
+  function closeMenu() {
+    document.getElementById("mobileMenu").classList.add("hidden");
+  }
 </script>
 
 </body>
